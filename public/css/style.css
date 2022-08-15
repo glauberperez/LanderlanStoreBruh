@@ -1,0 +1,67 @@
+.daBody{
+    background-image: url('../img/theroca.jpg');
+    background-size: cover;
+}
+
+.bah {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    backdrop-filter: blur(5px);
+}
+
+.navball {
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(5px);
+    font-weight: bolder;
+}
+
+.navball div ul li a {
+    color: #fff;
+    margin: 0 0 0 -20;
+}
+
+.navball .navbar-brand {
+    margin: 0 0 0 25px;
+    color: #fff;
+    transform: translate(1800%, 0);
+}
+
+.centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 15vh;
+    backdrop-filter: blur(5px);
+}
+
+.bah ul a,
+.sidebar a span,
+.sidebar .dropdown a strong {
+    color: #fff;
+}
+
+.formm {
+    margin-top: 5vh;
+}
+
+.admin-title {
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
+    color: #fff;
+}
+
+.table {
+    color: #fff;
+    margin: 10vh 5vw 0 10vw;
+    font-weight: bolder;
+}
