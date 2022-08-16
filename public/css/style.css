@@ -61,7 +61,19 @@
 }
 
 .table {
-    color: #fff;
+    background-color: #fff;
     margin: 10vh 5vw 0 10vw;
     font-weight: bolder;
+}
+
+table thead {
+    background-color: rgb(58, 57, 57);
+}
+
+.btn-primary {
+    margin: 0 30px 10px 10px;
+}
+
+.black-text {
+    color: black;
 }
