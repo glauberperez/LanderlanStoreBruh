@@ -56,8 +56,15 @@
 .admin-title {
     display: flex;
     justify-content: center;
-    margin-top: 5vh;
+    margin-top: 35vh;
     color: #fff;
+}
+
+.admin-title .the-title {
+    font-size: 40pt;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bolder;
+    font-style: italic;
 }
 
 .table {

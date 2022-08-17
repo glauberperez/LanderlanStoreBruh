@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Categoria;
+use App\Http\Controllers\Cliente;
+use App\Http\Controllers\Pedido;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,3 +39,9 @@ Route::get('/pedido', function () {
 Route::get('/admin', function () {
     return view('admin');
 });
+
+Route::resource('/cliente', Cliente::class);
+
+Route::resource('/pedido', Pedido::class);
+
+Route::resource('/categoria', Categoria::class);
