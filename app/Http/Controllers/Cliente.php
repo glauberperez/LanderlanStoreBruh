@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cliente as ModelsCliente;
 use Illuminate\Http\Request;
 
 class Cliente extends Controller
 {
+    private $cliente;
+    public function __construct()
+    {
+        $this->cliente = new ModelsCliente();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +20,9 @@ class Cliente extends Controller
      */
     public function index()
     {
-        return view('cliente');
+        $temp = $this->cliente->all();
+        
+        return view('cliente', compact('temp'));
     }
 
     /**

@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 class Pedido extends Controller
 {
     private $pedidos;
-
     public function __construct()
     {
         $this->pedidos = new ModelsPedido();
