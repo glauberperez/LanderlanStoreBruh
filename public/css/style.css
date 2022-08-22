@@ -84,3 +84,7 @@ table thead {
 .black-text {
     color: black;
 }
+
+.btn-cadastro {
+    height: 30px;
+}

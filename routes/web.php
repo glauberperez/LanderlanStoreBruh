@@ -3,6 +3,7 @@
 use App\Http\Controllers\Categoria;
 use App\Http\Controllers\Cliente;
 use App\Http\Controllers\Pedido;
+use App\Http\Controllers\Produto;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,3 +46,5 @@ Route::resource('/cliente', Cliente::class);
 Route::resource('/pedido', Pedido::class);
 
 Route::resource('/categoria', Categoria::class);
+
+Route::resource('/produto', Produto::class);

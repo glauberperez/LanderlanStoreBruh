@@ -3,13 +3,20 @@
 @section('content')
 
 <table class="table table-light table-striped">
+
   <thead class="table table-dark">
+      <div class="col-sm-6">
+						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
+						<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
+      </div>
+        <i title="Adicionar" class="fa-solid fa-plus" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+    </tr>  
     <tr>
       <th scope="col">idCliente</th>
       <th scope="col">nome</th>
       <th scope="col">dtNasc</th>
       <th scope="col">estadoCivil</th>
-      <th scope="col">enderecos</th>
+      <th scope="col">endereco</th>
       <th scope="col">numero</th>
       <th scope="col">complemento</th>
       <th scope="col">cep</th>
@@ -23,10 +30,23 @@
     </tr>
   </thead>
   <tbody>
-    @foreach($temp as $categoria)
+    @foreach($temp as $cliente)
       <tr>
-        <th scope="row">{{ $categoria->idCategoria }}</th>
-        <td>{{ $categoria->categoria }}</td>
+        <th scope="row">{{ $cliente->idCliente }}</th>
+        <td>{{ $cliente->nome }}</td>
+        <td>{{ $cliente->rg }}</td>
+        <td>{{ $cliente->cpf }}</td>
+        <td>{{ $cliente->dtNasc }}</td>
+        <td>{{ $cliente->estadoCivil }}</td>
+        <td>{{ $cliente->email }}</td>
+        <td>{{ $cliente->celular }}</td>
+        <td>{{ $cliente->fone }}</td>
+        <td>{{ $cliente->estado }}</td>
+        <td>{{ $cliente->cidade }}</td>
+        <td>{{ $cliente->numero }}</td>
+        <td>{{ $cliente->complemento }}</td>
+        <td>{{ $cliente->cep }}</td>
+        <td>{{ $cliente->endereco }}</td>
       </tr>
       @endforeach
   </tbody>
@@ -70,10 +90,13 @@
 </div>
 
 <!-- Button trigger modal -->
+<!--
 <div class="center-center">
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Cadastrar
   </button>
 </div>
+-->
+
 
 @endsection
