@@ -5,29 +5,30 @@
 <table class="table table-light table-striped">
   <thead class="table table-dark">
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">idCliente</th>
+      <th scope="col">nome</th>
+      <th scope="col">dtNasc</th>
+      <th scope="col">estadoCivil</th>
+      <th scope="col">enderecos</th>
+      <th scope="col">numero</th>
+      <th scope="col">complemento</th>
+      <th scope="col">cep</th>
+      <th scope="col">cidade</th>
+      <th scope="col">estado</th>
+      <th scope="col">rg</th>
+      <th scope="col">cpf</th>
+      <th scope="col">email</th>
+      <th scope="col">fone</th>
+      <th scope="col">celular</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    @foreach($temp as $categoria)
+      <tr>
+        <th scope="row">{{ $categoria->idCategoria }}</th>
+        <td>{{ $categoria->categoria }}</td>
+      </tr>
+      @endforeach
   </tbody>
   <!-- Button trigger modal -->
 </table>
