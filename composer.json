@@ -27,6 +27,10 @@
             "Database\\Seeders\\": "database/seeders/"
         }
     },
+    "post-create-project-cmd": [
+        "php -r \"copy('.env.example', '.env');\"",
+        "php artisan key:generate"
+    ],
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
