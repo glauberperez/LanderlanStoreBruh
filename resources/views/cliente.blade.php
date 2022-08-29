@@ -4,13 +4,7 @@
 
 <table class="table table-light table-striped">
 
-  <thead class="table table-dark">
-      <div class="col-sm-6">
-						<a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
-						<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
-      </div>
-        <i title="Adicionar" class="fa-solid fa-plus" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
-    </tr>  
+  <thead class="table table-primary">
     <tr>
       <th scope="col">idCliente</th>
       <th scope="col">nome</th>
@@ -26,8 +20,10 @@
       <th scope="col">cpf</th>
       <th scope="col">email</th>
       <th scope="col">fone</th>
-      <th scope="col">celular</th>
-    </tr>
+      <th scope="col">celular</th> 
+      <th scope="col"><i title="Adicionar" class="fa-solid fa-plus" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></th>
+    </tr>     
+
   </thead>
   <tbody>
     @foreach($temp as $cliente)
@@ -47,6 +43,7 @@
         <td>{{ $cliente->complemento }}</td>
         <td>{{ $cliente->cep }}</td>
         <td>{{ $cliente->endereco }}</td>
+        <td></td>
       </tr>
       @endforeach
   </tbody>
@@ -66,25 +63,67 @@
       <div class="modal-body">
       <form class="black-text">
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          <label for="exampleInputEmail1" class="form-label">Nome</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
+          <label for="exampleInputEmail1" class="form-label">Data de nascimento</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">CPF</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">RG</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Estado civil</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Celular</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Telefone</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">CEP</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Estado</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Cidade</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Numero</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Endereço</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Complemento</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="submit" class="btn btn-primary">Adicionar Cliente</button>
       </div>
+    </form>
     </div>
   </div>
 </div>

@@ -3,7 +3,7 @@
 @section('content')
 
 <table class="table table-light table-striped">
-  <thead class="table table-dark">
+  <thead class="table table-primary">
     <tr>
       <th scope="col">idCategoria</th>
       <th scope="col">categoria</th>

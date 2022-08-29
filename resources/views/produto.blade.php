@@ -3,7 +3,7 @@
 @section('content')
 
 <table class="table table-light table-striped">
-  <thead class="table table-dark">
+  <thead class="table table-primary">
     <tr>
       <th scope="col">idProduto</th>
       <th scope="col">idCategoria</th>
@@ -32,7 +32,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header black-text">
-        <h5 class="modal-title" id="exampleModalLabel">Cadastrar categoria</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Cadastrar produto</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
