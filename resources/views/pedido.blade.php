@@ -25,6 +25,7 @@
       <td>{{ $pedido->descricao }}</td>
       <td>{{ $pedido->valor }}</td>
       <td>{{ $pedido->data }}</td>
+      <td><i title="Editar" class="fa-solid fa-pen-to-square"></i></td>
     </tr>
     @endforeach
   </tbody>

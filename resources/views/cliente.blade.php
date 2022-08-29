@@ -8,7 +8,7 @@
     <tr>
       <th scope="col">idCliente</th>
       <th scope="col">nome</th>
-      <th scope="col">dtNasc</th>
+      <th scope="col">dtNasc    </th>
       <th scope="col">estadoCivil</th>
       <th scope="col">endereco</th>
       <th scope="col">numero</th>
@@ -30,20 +30,20 @@
       <tr>
         <th scope="row">{{ $cliente->idCliente }}</th>
         <td>{{ $cliente->nome }}</td>
-        <td>{{ $cliente->rg }}</td>
-        <td>{{ $cliente->cpf }}</td>
         <td>{{ $cliente->dtNasc }}</td>
         <td>{{ $cliente->estadoCivil }}</td>
-        <td>{{ $cliente->email }}</td>
-        <td>{{ $cliente->celular }}</td>
-        <td>{{ $cliente->fone }}</td>
-        <td>{{ $cliente->estado }}</td>
-        <td>{{ $cliente->cidade }}</td>
+        <td>{{ $cliente->endereco }}</td>
         <td>{{ $cliente->numero }}</td>
         <td>{{ $cliente->complemento }}</td>
         <td>{{ $cliente->cep }}</td>
-        <td>{{ $cliente->endereco }}</td>
-        <td></td>
+        <td>{{ $cliente->cidade }}</td>
+        <td>{{ $cliente->estado }}</td>
+        <td>{{ $cliente->rg }}</td>
+        <td>{{ $cliente->cpf }}</td>
+        <td>{{ $cliente->email }}</td>
+        <td>{{ $cliente->fone }}</td>
+        <td>{{ $cliente->celular }}</td>
+        <td><i title="Editar" class="fa-solid fa-pen-to-square"></i></td>
       </tr>
       @endforeach
   </tbody>
@@ -64,59 +64,64 @@
       <form class="black-text">
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Nome</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="name" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Data de nascimento</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="birthday" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">CPF</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="cpf" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">RG</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="rg" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Email</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="email" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Estado civil</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <select name="status" id="status">
+            <option' value="married">Casado</option>
+            <option value="single">Solteiro</option>
+            <option value="widow">Viuvo</option>
+            <option value="outro">Outro</option>
+          </select>
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Celular</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="cellphone" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Telefone</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="phone" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">CEP</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input type="text" class="form-control" data-mask='cep' id="cep" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Estado</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="state" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Cidade</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="city" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Numero</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="number" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Endereço</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="address" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Complemento</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="complement" aria-describedby="emailHelp">
         </div>
       </div>
       <div class="modal-footer">
@@ -127,6 +132,23 @@
     </div>
   </div>
 </div>
+
+<script src="{{asset('js/jquery.min.js')}}"></script>
+<script type="text/javascript" src="../assets/js/jquery.mask.js"></script>
+<script>
+  $(document).ready(() => {
+    // window.alert('test')
+    const $cpf = $('#0cpf')
+    const $cep = $('#cep')
+    const $cellphone = $('#cellphone')
+    const $phone = $('#phone')
+
+    $cpf.mask('000.000.000-00')
+    $cep.mask('00000-000')
+    $cellphone.mask('(00) 0 0000-0000')
+    $phone.mask('(00) 0 0000-0000')
+  })
+</script>
 
 <!-- Button trigger modal -->
 <!--

@@ -15,6 +15,7 @@
     <tr>
       <th scope="row">{{ $categoria->idCategoria }}</th>
       <td>{{ $categoria->categoria }}</td>
+      <td><i title="Editar" class="fa-solid fa-pen-to-square"></i></td>
     </tr>
     @endforeach
   </tbody>

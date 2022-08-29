@@ -13,12 +13,13 @@
     </tr>
   </thead>
   <tbody>
-    @foreach($temp as $pedido) 
+    @foreach($temp as $produto) 
     <tr>
       <th scope="row">{{ $produto->idProduto }}</th>
       <td>{{ $produto->idCategoria }}</td>
       <td>{{ $produto->valor }}</td>
       <td>{{ $produto->produto }}</td>
+      <td><i title="Editar" class="fa-solid fa-pen-to-square"></i></td>
     </tr>
     @endforeach
   </tbody>
@@ -39,15 +40,15 @@
       <form class="black-text">
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">idCategoria</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="idCategoria" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">produto</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="produto" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">valor</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="valor" aria-describedby="emailHelp">
         </div>
         <button type="submit" class="btn btn-primary">Enviar</button>
       </form>
@@ -55,6 +56,13 @@
     </div>
   </div>
 </div>
+
+<script src="{{asset('js/jquery.min.js')}}"></script>
+<script> 
+  $(document).ready(() => {
+    window.alert('bah')
+  })
+</script>
 
 <!-- Button trigger modal -->
 <!--
