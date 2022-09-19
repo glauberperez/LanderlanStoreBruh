@@ -43,7 +43,13 @@ class Categoria extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $store = $this->categoria->create([
+            'categoria' => $request->categoria
+        ]);
+
+        if ($store) {
+            return redirect()->back();
+        }
     }
 
     /**

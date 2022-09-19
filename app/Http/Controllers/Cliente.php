@@ -43,7 +43,9 @@ class Cliente extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /* $store = $this->cliente->create({
+            
+        }); */
     }
 
     /**
