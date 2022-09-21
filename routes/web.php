@@ -41,6 +41,7 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
+
 Route::resource('/cliente', Cliente::class);
 
 Route::resource('/pedido', Pedido::class);

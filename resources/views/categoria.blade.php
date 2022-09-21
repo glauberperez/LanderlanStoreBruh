@@ -33,7 +33,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <form class="black-text">
+      <form action='{{ route("categoria.store") }}' class="black-text">
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Categoria</label>
           <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">

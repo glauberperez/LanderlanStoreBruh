@@ -48,7 +48,7 @@ class Categoria extends Controller
         ]);
 
         if ($store) {
-            return redirect()->back();
+            return redirect()->route('categoria.index');
         }
     }
 
