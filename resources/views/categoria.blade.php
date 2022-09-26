@@ -36,7 +36,7 @@
       <form  method="POST" action="{{ route('categoria.store') }}" enctype="multipart/form-data" class="black-text">
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Categoria</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="name" name="categoryName" aria-describedby="emailHelp">
         </div>
         <button type="submit" class="btn btn-primary">Enviar</button>
       </form>

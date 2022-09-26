@@ -44,7 +44,7 @@ class Categoria extends Controller
     public function store(Request $request)
     {
         $store = $this->categoria->create([
-            'categoria' => $request->categoria
+            'categoria' => $request->categoryName
         ]); 
 
         if ($store) {
