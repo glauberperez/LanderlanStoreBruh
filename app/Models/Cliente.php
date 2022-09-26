@@ -10,6 +10,7 @@ class Cliente extends Model
     use HasFactory;
 
     protected $table = "tbCliente";
+
     protected $fillable = [
         "idCliente",
         "nome",
@@ -27,4 +28,5 @@ class Cliente extends Model
         "fone",
         "celular"
     ];
+    
 }
