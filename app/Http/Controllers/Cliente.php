@@ -96,7 +96,22 @@ class Cliente extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = $this->cliente->where(['id' => $id])->update([
+            "nome" => $request->nome,
+            "dtNasc" => $request->dtNasc,
+            "estadoCivil" => $request->estadoCivil,
+            "endereco" => $request->endereco,
+            "numero" => $request->numero,
+            "complemento" => $request->complemento,
+            "cep" => $request->cep,
+            "cidade" => $request->cidade,
+            "estado" => $request->estado,
+            "rg" => $request->rg,
+            "cpf" => $request->cpf,
+            "email" => $request->email,
+            "fone" => $request->fone,
+            "celular" => $request->celular,
+        ]);
     }
 
     /**
@@ -107,6 +122,10 @@ class Cliente extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = $this->cliente->find($id)->delete();
+
+        if ($delete) {
+            return redirect()->route('cliente.index');
+        }
     }
 }

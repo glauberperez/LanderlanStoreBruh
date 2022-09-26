@@ -87,7 +87,14 @@ class Pedido extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = $this->pedidos->where(['id' => $id])->update([
+            "idProduto" => $request->idProduto,
+            "idCategoria" => $request->idCategoria,
+            "idCliente" => $request->idCliente,
+            "descricao" => $request->descricao,
+            "valor" => $request->valor,
+            "data" => $request->data,
+        ]);
     }
 
     /**
@@ -98,6 +105,10 @@ class Pedido extends Controller
      */
     public function destroy($id)
     {
-        //
+        $destroy = $this->pedidos->destroy($id);
+
+        if ($destroy) {
+            return redirect()->route('pedido.index');
+        }
     }
 }

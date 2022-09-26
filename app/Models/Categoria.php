@@ -11,7 +11,7 @@ class Categoria extends Model
     use HasFactory;
 
     public $timestamps = false;
-    protected $table = "tbCategoria";
+    protected $table = "tbcategoria";
     protected $fillable = [
         "idCategoria",
         "categoria",

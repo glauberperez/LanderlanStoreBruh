@@ -9,7 +9,7 @@ class Cliente extends Model
 {
     use HasFactory;
 
-    protected $table = "tbCliente";
+    protected $table = "tbcliente";
     public $timestamps = false;
 
     protected $fillable = [

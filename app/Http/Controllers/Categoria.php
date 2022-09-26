@@ -85,7 +85,9 @@ class Categoria extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = $this->categoria->where('id', $id)->update([
+            'categoria' => $request->categoryName
+        ]);
     }
 
     /**
@@ -96,6 +98,10 @@ class Categoria extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = $this->categoria->destroy($id);
+
+        if ($delete) {
+            return redirect()->route('categoria.index');
+        }
     }
 }

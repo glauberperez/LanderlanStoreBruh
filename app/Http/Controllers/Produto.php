@@ -84,7 +84,10 @@ class Produto extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = $this->produto->where('id', $id)->update([
+            'produto' => $request->produto,
+            'valor' => $request->valor,
+        ]);
     }
 
     /**
@@ -95,6 +98,10 @@ class Produto extends Controller
      */
     public function destroy($id)
     {
-        //
+        $destroy = $this->produto->destroy($id);
+
+        if ($destroy) {
+            return redirect()->route('produto.index');
+        }
     }
 }
