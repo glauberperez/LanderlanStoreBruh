@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// views
 Route::get('/', function () {
     return view('home');
 });
@@ -41,7 +42,17 @@ Route::get('/admin', function () {
     return view('admin');
 });
 
+// cadastros
+Route::post('/cliente', [Cliente::class, 'store'])->name('store');
 
+Route::post('/categoria', [Categoria::class, 'store'])->name('store');
+
+Route::post('/produto', [Produto::class, 'store'])->name('store');
+
+Route::post('/pedido', [Pedido::class, 'store'])->name('store');
+
+
+// resources
 Route::resource('/cliente', Cliente::class);
 
 Route::resource('/pedido', Pedido::class);
