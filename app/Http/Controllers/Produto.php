@@ -44,7 +44,7 @@ class Produto extends Controller
     {
         $store = $this->produto->create([
             'idCategoria' => $request->idCategoria,
-            'descricao' => $request->descricao,
+            'produto' => $request->produto,
             'valor' => $request->valor,
         ]);
 

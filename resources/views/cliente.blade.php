@@ -61,67 +61,62 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <form class="black-text">
+      <form method="POST" action="{{ route('cliente.store') }}" enctype="multipart/form-data" class="black-text">
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Nome</label>
-          <input type="text" class="form-control" id="name" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="name" name="nome" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Data de nascimento</label>
-          <input type="text" class="form-control" id="birthday" aria-describedby="emailHelp">
+          <input type="date" class="form-control" id="birthday" name="dtNasc" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">CPF</label>
-          <input type="text" class="form-control" id="cpf" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="cpf" name="cpf" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">RG</label>
-          <input type="text" class="form-control" id="rg" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="rg" name="rg" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Email</label>
-          <input type="text" class="form-control" id="email" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="email" name="email" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Estado civil</label>
-          <select name="status" id="status">
-            <option' value="married">Casado</option>
-            <option value="single">Solteiro</option>
-            <option value="widow">Viuvo</option>
-            <option value="outro">Outro</option>
-          </select>
+          <label for="exampleInputEmail1" class="form-label">Estado Civil</label>
+          <input type="text" class="form-control" id="status" name="estadoCivil" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Celular</label>
-          <input type="text" class="form-control" id="cellphone" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="cellphone" name="celular" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Telefone</label>
-          <input type="text" class="form-control" id="phone" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="phone" name="fone" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">CEP</label>
-          <input type="text" class="form-control" data-mask='cep' id="cep" aria-describedby="emailHelp">
+          <input type="text" class="form-control" data-mask='cep' id="cep" name="cep" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Estado</label>
-          <input type="text" class="form-control" id="state" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="state" name="estado" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Cidade</label>
-          <input type="text" class="form-control" id="city" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="city" name="cidade" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Numero</label>
-          <input type="text" class="form-control" id="number" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="number" name="numero" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Endereço</label>
-          <input type="text" class="form-control" id="address" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="address" name="endereco" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Complemento</label>
-          <input type="text" class="form-control" id="complement" aria-describedby="emailHelp">
+        <input type="text" class="form-control" id="complement" name="complemento" aria-describedby="emailHelp">
         </div>
       </div>
       <div class="modal-footer">

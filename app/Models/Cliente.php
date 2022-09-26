@@ -10,6 +10,7 @@ class Cliente extends Model
     use HasFactory;
 
     protected $table = "tbCliente";
+    public $timestamps = false;
 
     protected $fillable = [
         "idCliente",

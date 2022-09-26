@@ -45,7 +45,7 @@ class Pedido extends Controller
         $store = $this->pedidos->create([
             "idProduto" => $request->idProduto,
             "idCategoria" => $request->idCategoria,
-            "idPedido" => $request->idPedido,
+            "idCliente" => $request->idCliente,
             "descricao" => $request->descricao,
             "valor" => $request->valor,
             "data" => $request->data,

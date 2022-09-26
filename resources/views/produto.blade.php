@@ -37,18 +37,18 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <form class="black-text">
+      <form action="{{ route('produto.store') }}" method="POST" enctype="multipart/form-data" class="black-text">
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">idCategoria</label>
-          <input type="text" class="form-control" id="idCategoria" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="idCategoria" name="idCategoria" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">produto</label>
-          <input type="text" class="form-control" id="produto" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="produto" name="produto" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">valor</label>
-          <input type="text" class="form-control" id="valor" aria-describedby="emailHelp">
+          <input type="text" class="form-control" id="valor" name="valor" aria-describedby="emailHelp">
         </div>
         <button type="submit" class="btn btn-primary">Enviar</button>
       </form>
@@ -59,9 +59,9 @@
 
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script> 
-  $(document).ready(() => {
+/*   $(document).ready(() => {
     window.alert('bah')
-  })
+  }) */
 </script>
 
 <!-- Button trigger modal -->

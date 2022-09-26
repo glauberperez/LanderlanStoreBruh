@@ -44,7 +44,6 @@ class Cliente extends Controller
     public function store(Request $request)
     {
          $store = $this->cliente->create([
-            "idCliente" => $request->idCliente,
             "nome" => $request->nome,
             "dtNasc" => $request->dtNasc,
             "estadoCivil" => $request->estadoCivil,

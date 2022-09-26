@@ -9,6 +9,8 @@ class Categoria extends Controller
 {
 
     private $categoria;
+    
+
     public function __construct()
     {
         $this->categoria = new ModelsCategoria();
