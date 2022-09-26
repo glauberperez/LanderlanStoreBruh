@@ -42,7 +42,15 @@ class Produto extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $store = $this->produto->create([
+            'idCategoria' => $request->idCategoria,
+            'descricao' => $request->descricao,
+            'valor' => $request->valor,
+        ]);
+
+        if ($store) {
+            return redirect()->route('produto.index');
+        }
     }
 
     /**

@@ -42,7 +42,18 @@ class Pedido extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $store = $this->pedidos->create([
+            "idProduto" => $request->idProduto,
+            "idCategoria" => $request->idCategoria,
+            "idPedido" => $request->idPedido,
+            "descricao" => $request->descricao,
+            "valor" => $request->valor,
+            "data" => $request->data,
+        ]);
+
+        if ($store) {
+            return redirect()->route('pedido.index');
+        }
     }
 
     /**

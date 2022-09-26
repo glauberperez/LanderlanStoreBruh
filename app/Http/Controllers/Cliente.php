@@ -43,9 +43,27 @@ class Cliente extends Controller
      */
     public function store(Request $request)
     {
-        /* $store = $this->cliente->create({
-            
-        }); */
+         $store = $this->cliente->create([
+            "idCliente" => $request->idCliente,
+            "nome" => $request->nome,
+            "dtNasc" => $request->dtNasc,
+            "estadoCivil" => $request->estadoCivil,
+            "endereco" => $request->endereco,
+            "numero" => $request->numero,
+            "complemento" => $request->complemento,
+            "cep" => $request->cep,
+            "cidade" => $request->cidade,
+            "estado" => $request->estado,
+            "rg" => $request->rg,
+            "cpf" => $request->cpf,
+            "email" => $request->email,
+            "fone" => $request->fone,
+            "celular" => $request->celular,
+        ]); 
+
+        if ($store) {
+            return redirect()->route('cliente.index');
+        }
     }
 
     /**
