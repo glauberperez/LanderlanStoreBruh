@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Produto as ModelsProduto;
+use App\Models\Pedido as ModelsPedido;
 
 class Produto extends Controller
 {
@@ -19,8 +20,12 @@ class Produto extends Controller
      */
     public function index()
     {
-        $temp = $this->produto->all();
+        //$temp = $this->produto->all();
 
+        $temp = ModelsProduto::select('tbproduto.produto', 'tbproduto.valor', 'tbcategoria.categoria')
+        ->join('tbcategoria', 'tbproduto.idCategoria', '=', 'tbcategoria.idCategoria')
+        ->get();
+        
         return view('produto', compact('temp'));
     }
 
@@ -42,8 +47,20 @@ class Produto extends Controller
      */
     public function store(Request $request)
     {
+        $imageName = "";
+
+        if($request->hasFile("foto") && $request->file("foto")->isValid()) {
+            $requestImage = $request->foto;
+
+            $extension = $requestImage->extension();
+
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            $request->foto->move(public_path('img/produtos'), $imageName);
+        }
+
         $store = $this->produto->create([
             'idCategoria' => $request->idCategoria,
+            'foto' => $imageName,
             'produto' => $request->produto,
             'valor' => $request->valor,
         ]);
@@ -88,6 +105,10 @@ class Produto extends Controller
             'produto' => $request->produto,
             'valor' => $request->valor,
         ]);
+
+        if ($update) {
+            return redirect()->route('produto.index');
+        }
     }
 
     /**
@@ -98,7 +119,9 @@ class Produto extends Controller
      */
     public function destroy($id)
     {
-        $destroy = $this->produto->destroy($id);
+        $pedido = ModelsPedido::where('idProduto', $id)->delete();
+        
+        $destroy = ModelsProduto::where('idProduto', $id)->delete();
 
         if ($destroy) {
             return redirect()->route('produto.index');
