@@ -43,7 +43,10 @@
         <td>{{ $cliente->email }}</td>
         <td>{{ $cliente->fone }}</td>
         <td>{{ $cliente->celular }}</td>
-        <td><i title="Editar" class="fa-solid fa-pen-to-square"></i></td>
+        <td>        
+          <a href=""><i title="Editar" class="fa-solid fa-pen-to-square"></i></a> <!-- fazer o modaizolas -->
+          <a href="/cliente/d/{{ $cliente->idCliente }}"><i title="Excluir" class="fa-solid fa-trash"></i></a>
+      </td>
       </tr>
       @endforeach
   </tbody>
@@ -57,11 +60,12 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header black-text">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Cadastrar cliente</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
       <form method="POST" action="{{ route('cliente.store') }}" enctype="multipart/form-data" class="black-text">
+        @csrf
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Nome</label>
           <input type="text" class="form-control" id="name" name="nome" aria-describedby="emailHelp">
@@ -127,23 +131,6 @@
     </div>
   </div>
 </div>
-
-<script src="{{asset('js/jquery.min.js')}}"></script>
-<script type="text/javascript" src="../assets/js/jquery.mask.js"></script>
-<script>
-  $(document).ready(() => {
-    // window.alert('test')
-    const $cpf = $('#0cpf')
-    const $cep = $('#cep')
-    const $cellphone = $('#cellphone')
-    const $phone = $('#phone')
-
-    $cpf.mask('000.000.000-00')
-    $cep.mask('00000-000')
-    $cellphone.mask('(00) 0 0000-0000')
-    $phone.mask('(00) 0 0000-0000')
-  })
-</script>
 
 <!-- Button trigger modal -->
 <!--

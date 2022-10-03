@@ -25,7 +25,10 @@
       <td>{{ $pedido->descricao }}</td>
       <td>{{ $pedido->valor }}</td>
       <td>{{ $pedido->data }}</td>
-      <td><i title="Editar" class="fa-solid fa-pen-to-square"></i></td>
+      <td>
+        <a href=""><i title="Editar" class="fa-solid fa-pen-to-square"></i></a> <!-- fazer o modaizolas -->
+        <a href="/pedido/d/{{$pedido->idPedido}}"><i title="Excluir" class="fa-solid fa-trash"></i></a>
+      </td>
     </tr>
     @endforeach
   </tbody>
@@ -44,6 +47,7 @@
       </div>
       <div class="modal-body">
       <form method="POST" enctype="multipart/form-data" action="{{ route('pedido.store') }}" class="black-text">
+        @csrf
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">idProduto</label>
           <input type="number" class="form-control" id="exampleInputEmail1" name="idProduto" aria-describedby="emailHelp">

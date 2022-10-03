@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria as ModelsCategoria;
+use App\Models\Produto;
 use Illuminate\Http\Request;
 
 class Categoria extends Controller
@@ -98,7 +99,10 @@ class Categoria extends Controller
      */
     public function destroy($id)
     {
-        $delete = $this->categoria->destroy($id);
+        //$delete = $this->categoria->destroy($id);
+        $produtos = Produto::where('idCategoria', $id)->delete();
+
+        $delete = ModelsCategoria::where('idCategoria', $id)->delete();
 
         if ($delete) {
             return redirect()->route('categoria.index');

@@ -104,8 +104,8 @@ class Pedido extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        $destroy = $this->pedidos->destroy($id);
+    {        
+        $destroy = ModelsPedido::where('idPedido', $id)->delete();
 
         if ($destroy) {
             return redirect()->route('pedido.index');

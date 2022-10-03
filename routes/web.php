@@ -53,13 +53,14 @@ Route::post('/pedido', [Pedido::class, 'store'])->name('store');
 
 
 // deletes
-Route::delete('/cliente/{id}', [Cliente::class, 'destroy'])->name('destroy');
+Route::get('/cliente/d/{id}', [Cliente::class, 'destroy'])->name('destroy');
 
-Route::delete('/categoria/{id}', [Categoria::class, 'destroy'])->name('destroy');
+Route::get('/categoria/d/{id}', [Categoria::class, 'destroy'])->name('destroy');
 
-Route::delete('/produto/{id}', [Produto::class, 'destroy'])->name('destroy');
+Route::get('/produto/d/{id}', [Produto::class, 'destroy'])->name('destroy');
 
-Route::delete('/pedido/{id}', [Pedido::class, 'destroy'])->name('destroy');
+Route::get('/pedido/d/{id}', [Pedido::class, 'destroy'])->name('destroy');
+
 
 // updates
 Route::put('/cliente/{id}', [Cliente::class, 'update'])->name('update');

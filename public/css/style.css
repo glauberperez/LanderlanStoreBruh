@@ -3,6 +3,10 @@
     background-size: cover;
 }
 
+.black-text {
+    color:rgb(12, 12, 12);
+}
+
 .bah {
     position: fixed;
     bottom: 0;
@@ -87,4 +91,16 @@ table thead {
 
 .btn-cadastro {
     height: 30px;
+}
+
+.doidera-braba {
+    margin: 12vh 2vw 2vh 8vw;
+}
+
+.cardard {
+    margin: 0.75vh auto auto auto;
+}
+
+.prod-modal-btn {
+    margin: 2vh auto auto auto;
 }

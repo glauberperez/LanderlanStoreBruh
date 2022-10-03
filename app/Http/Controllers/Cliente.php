@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente as ModelsCliente;
 use Illuminate\Http\Request;
+use App\Models\Pedido as ModelsPedido;
 
 class Cliente extends Controller
 {
@@ -122,7 +123,9 @@ class Cliente extends Controller
      */
     public function destroy($id)
     {
-        $delete = $this->cliente->find($id)->delete();
+        $pedidos = ModelsPedido::where('idCliente', $id)->delete();
+        
+        $delete = ModelsCliente::where('idCliente', $id)->delete();
 
         if ($delete) {
             return redirect()->route('cliente.index');
