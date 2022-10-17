@@ -4,6 +4,7 @@ use App\Http\Controllers\Categoria;
 use App\Http\Controllers\Cliente;
 use App\Http\Controllers\Pedido;
 use App\Http\Controllers\Produto;
+use App\Http\Controllers\Dashboard;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,8 +39,8 @@ Route::get('/pedido', function () {
     return view('pedido');
 });
 
-Route::get('/admin', function () {
-    return view('admin');
+Route::get('/dashboard', function () {
+    return view('dashboard');
 });
 
 // cadastros
