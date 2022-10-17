@@ -33,7 +33,13 @@
             <div class="card-body">
                 <h5 class="card-title">{{ $produto->produto  }}</h5>
                 <a class="btn btn-success">Editar</a>
-                <a href="/produto/d/{{ $produto->idProduto }}" class="btn btn-danger">Delete</a>
+                <!-- <a href="/produto/d/{{ $produto->idProduto }}" class="btn btn-danger">Delete</a> -->
+                @csrf
+                @method('delete')
+
+                
+                <a href="{{ url('/produto/d/'.$produto->idProduto) }}" class="btn btn-danger" value="{{ $produto->idProduto }}">Delete</a>
+
             </div>
         </div>
     </div>

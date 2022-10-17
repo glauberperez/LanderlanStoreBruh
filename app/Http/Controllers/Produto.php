@@ -22,9 +22,10 @@ class Produto extends Controller
     {
         //$temp = $this->produto->all();
 
-        $temp = ModelsProduto::select('tbproduto.produto', 'tbproduto.valor', 'tbcategoria.categoria')
+        $temp = ModelsProduto::select('tbproduto.produto', 'tbproduto.idProduto', 'tbproduto.valor', 'tbcategoria.categoria')
         ->join('tbcategoria', 'tbproduto.idCategoria', '=', 'tbcategoria.idCategoria')
         ->get();
+
         
         return view('produto', compact('temp'));
     }
@@ -109,6 +110,8 @@ class Produto extends Controller
         if ($update) {
             return redirect()->route('produto.index');
         }
+        
+        return redirect()->back();
     }
 
     /**
@@ -123,8 +126,10 @@ class Produto extends Controller
         
         $destroy = ModelsProduto::where('idProduto', $id)->delete();
 
-        if ($destroy) {
+        if ($destroy && $pedido) {
             return redirect()->route('produto.index');
-        }
+        } 
+
+        return redirect()->route('produto.index');
     }
 }

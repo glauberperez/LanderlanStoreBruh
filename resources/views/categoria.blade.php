@@ -20,7 +20,7 @@
         <a href="" data-bs-toggle="modal" data-bs-target="#insertModal"><i title="Editar" class="fa-solid fa-pen-to-square"></i></a>
         @method('delete')
 
-        <a href="/categoria/d/{{$categoria->idCategoria}}"><i title="Excluir" class="fa-solid fa-trash"></i></a>
+        <a href=""><i title="Excluir" class="fa-solid fa-trash"></i></a>
 
       </td>
     </tr>
@@ -62,7 +62,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <form  method="PUT" action="{{ route('categoria.update') }}" enctype="multipart/form-data" class="black-text">
+      <form  method="PUT" action="{{ route('categoria.update', $categoria->idCategoria, $categoria->categoria) }}" enctype="multipart/form-data" class="black-text">
         @csrf
         <div class="mb-3">
           <label class="form-label">Categoria</label>

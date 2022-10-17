@@ -72,10 +72,10 @@ Route::put('/produto/{id}', [Produto::class, 'update'])->name('update');
 Route::put('/pedido/{id}', [Pedido::class, 'update'])->name('update');
 
 // resources
-Route::resource('/cliente', Cliente::class);
+Route::resource('cliente', Cliente::class);
 
-Route::resource('/pedido', Pedido::class);
+Route::resource('pedido', Pedido::class);
 
-Route::resource('/categoria', Categoria::class);
+Route::resource('categoria', Categoria::class);
 
-Route::resource('/produto', Produto::class);
+Route::resource('produto', Produto::class);

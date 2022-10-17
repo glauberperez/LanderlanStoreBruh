@@ -87,8 +87,14 @@ class Categoria extends Controller
     public function update(Request $request, $id)
     {
         $update = $this->categoria->where('id', $id)->update([
-            'categoria' => $request->categoryName
+            'categoria' => $request->categoria
         ]);
+
+        if($update) {
+            return redirect()->route('categoria.index');
+        }
+
+        return redirect()->route('categoria.index');
     }
 
     /**
