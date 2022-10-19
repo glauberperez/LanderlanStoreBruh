@@ -13,8 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::
+        Schema::create('tbcategoria', function (Blueprint $table) {
+            $table->increments('idCategoria');
+            $table->string('categoria')->unique()->nullable(false)->default('Categoria');
+            $table->timestamps();
+        });
     }
+
 
     /**
      * Reverse the migrations.
