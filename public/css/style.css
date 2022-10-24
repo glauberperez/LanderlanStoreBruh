@@ -3,6 +3,23 @@
     background-size: cover;
 }
 
+.title-navbar{
+    font-size: 26px;
+    text-decoration: none;
+    color: #fff;
+    text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 20px #fff,
+      0 0 40px rgb(255, 230, 0),
+      0 0 80px rgb(255, 230, 0),
+      0 0 90px rgb(255, 230, 0),
+      0 0 100px rgb(255, 230, 0),
+      0 0 150px rgb(255, 230, 0);
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
 .black-text {
     color:rgb(12, 12, 12);
 }
@@ -19,6 +36,11 @@
     top: 0;
     backdrop-filter: blur(5px);
     font-weight: bolder;
+}
+
+.nav-link:hover {
+    cursor: pointer;
+    color: aqua;
 }
 
 .navball div ul li a {

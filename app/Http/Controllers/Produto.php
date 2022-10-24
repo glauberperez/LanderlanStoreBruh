@@ -22,7 +22,7 @@ class Produto extends Controller
     {
         //$temp = $this->produto->all();
 
-        $temp = ModelsProduto::select('tbproduto.produto', 'tbproduto.idProduto', 'tbproduto.valor', 'tbcategoria.categoria')
+        $temp = ModelsProduto::select('tbproduto.produto', 'tbproduto.idProduto', 'tbproduto.foto', 'tbproduto.valor', 'tbcategoria.categoria')
         ->join('tbcategoria', 'tbproduto.idCategoria', '=', 'tbcategoria.idCategoria')
         ->get();
 

@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tbproduto', function (Blueprint $table) {
-            $table->id()->autoIncrement();
+            $table->increments('idProduto');
             $table->string('produto')->unique()->nullable(false)->default('Produto');
             $table->string('valor')->nullable(false)->default(0);
-            $table->integer('idCategoria')->nullable(false)->default(0);
+            $table->integer('idCategoria');
             $table->timestamps();
 
             $table->foreign('idCategoria')->references('idCategoria')->on('tbcategoria');

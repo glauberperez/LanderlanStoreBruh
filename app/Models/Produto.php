@@ -15,6 +15,7 @@ class Produto extends Model
         "idProduto",
         "idCategoria",
         "produto",
-        "valor"
+        "valor",
+        "foto"
     ];
 }

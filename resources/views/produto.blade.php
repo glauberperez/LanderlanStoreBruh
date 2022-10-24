@@ -28,10 +28,11 @@
   @foreach ($temp as $produto)
     <div class="col-2">
         <div class="card cardard" style="width: 14rem;">
-            <img src="/img/produtos/{{ $produto->foto }}" class="card-img-top" alt="...">
+            <img src="/img/produtos/{{ $produto->foto }}" width='100' height='50' class="card-img-top" alt="...">
             <hr>
             <div class="card-body">
                 <h5 class="card-title">{{ $produto->produto  }}</h5>
+                <p>{{ $produto->categoria }}</p>
                 <a class="btn btn-success">Editar</a>
                 <!-- <a href="/produto/d/{{ $produto->idProduto }}" class="btn btn-danger">Delete</a> -->
                 @csrf
