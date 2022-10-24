@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('tbpedido', function (Blueprint $table) {
             $table->increments('idPedido');
-            $table->unsignedInteger('idProduto')->nullable(false)->default(0);
-            $table->unsignedInteger('idCliente')->nullable(false)->default(0);
             $table->string('quantidade')->nullable(false)->default(0);
             $table->string('descricao')->nullable(false)->default('Descrição');
             $table->decimal('valor', 8, 2)->nullable(false)->default(0);
             $table->dateTime('data')->nullable(false)->default('2022-10-17 17:08:04');
+            $table->unsignedInteger('idProduto');
+            $table->unsignedInteger('idCliente');
             $table->timestamps();
 
             $table->foreign('idProduto')->references('idProduto')->on('tbproduto');
