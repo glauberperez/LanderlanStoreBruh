@@ -17,7 +17,7 @@ return new class extends Migration
             $table->increments('idProduto');
             $table->string('produto')->unique()->nullable(false)->default('Produto');
             $table->string('valor')->nullable(false)->default(0);
-            $table->integer('idCategoria');
+            $table->unsignedInteger('idCategoria');
             $table->timestamps();
 
             $table->foreign('idCategoria')->references('idCategoria')->on('tbcategoria');
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('tbproduto');
     }
 };

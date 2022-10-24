@@ -22,7 +22,7 @@ class Cliente extends Controller
     public function index()
     {
         $temp = $this->cliente->all();
-        
+
         return view('cliente', compact('temp'));
     }
 
@@ -44,7 +44,7 @@ class Cliente extends Controller
      */
     public function store(Request $request)
     {
-         $store = $this->cliente->create([
+        $store = $this->cliente->create([
             "nome" => $request->nome,
             "dtNasc" => $request->dtNasc,
             "estadoCivil" => $request->estadoCivil,
@@ -59,7 +59,7 @@ class Cliente extends Controller
             "email" => $request->email,
             "fone" => $request->fone,
             "celular" => $request->celular,
-        ]); 
+        ]);
 
         if ($store) {
             return redirect()->route('cliente.index');
@@ -124,11 +124,20 @@ class Cliente extends Controller
     public function destroy($id)
     {
         $pedidos = ModelsPedido::where('idCliente', $id)->delete();
-        
+
         $delete = ModelsCliente::where('idCliente', $id)->delete();
 
         if ($delete) {
             return redirect()->route('cliente.index');
         }
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->search;
+
+        $temp = $this->cliente->where('nome', 'like', "%{$search}%")->get();
+
+        return view('cliente', compact('temp'));
     }
 }

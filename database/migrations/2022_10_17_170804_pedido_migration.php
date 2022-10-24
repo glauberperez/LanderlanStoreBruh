@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('tbpedido', function (Blueprint $table) {
             $table->increments('idPedido');
-            $table->integer('idProduto')->nullable(false)->default(0);
-            $table->integer('idCliente')->nullable(false)->default(0);
+            $table->unsignedInteger('idProduto')->nullable(false)->default(0);
+            $table->unsignedInteger('idCliente')->nullable(false)->default(0);
             $table->string('quantidade')->nullable(false)->default(0);
             $table->string('descricao')->nullable(false)->default('Descrição');
             $table->decimal('valor', 8, 2)->nullable(false)->default(0);
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('tbpedido');
     }
 };

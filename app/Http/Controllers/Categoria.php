@@ -10,7 +10,7 @@ class Categoria extends Controller
 {
 
     private $categoria;
-    
+
 
     public function __construct()
     {
@@ -48,7 +48,7 @@ class Categoria extends Controller
     {
         $store = $this->categoria->create([
             'categoria' => $request->categoryName
-        ]); 
+        ]);
 
         if ($store) {
             return redirect()->route('categoria.index');
@@ -90,7 +90,7 @@ class Categoria extends Controller
             'categoria' => $request->categoria
         ]);
 
-        if($update) {
+        if ($update) {
             return redirect()->route('categoria.index');
         }
 
@@ -113,5 +113,14 @@ class Categoria extends Controller
         if ($delete) {
             return redirect()->route('categoria.index');
         }
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->except('_token');
+
+        $temp = $this->categoria->where('categoria', 'LIKE', "%{$request->search}%")->get();
+
+        return view('categoria', compact('temp', 'search'));
     }
 }

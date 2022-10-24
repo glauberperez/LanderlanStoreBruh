@@ -41,6 +41,12 @@ Route::get('/pedido', function () {
 
 Route::get('/dashboard', [Dashboard::class, 'index']);
 
+// gets
+Route::get('/cliente/get', [Cliente::class, 'get'])->name('getClientes');
+Route::get('/categoria/get', [Categoria::class, 'get']);
+Route::get('/produto/get', [Produto::class, 'get']);
+Route::get('/pedido/get', [Pedido::class, 'get']);
+
 // cadastros
 Route::post('/cliente', [Cliente::class, 'store'])->name('store');
 
