@@ -77,9 +77,16 @@ class Produto extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        dd($request);
+
+        $temp = ModelsProduto::select('tbproduto.produto', 'tbproduto.idProduto', 'tbproduto.foto', 'tbproduto.valor', 'tbcategoria.categoria')
+        ->join('tbcategoria', 'tbproduto.idCategoria', '=', 'tbcategoria.'.$request->idCategoria)
+        ->get();
+
+        
+        return view('produto', compact('temp', 'categoria'));
     }
 
     /**

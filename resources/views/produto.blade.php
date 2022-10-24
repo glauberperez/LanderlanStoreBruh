@@ -2,34 +2,12 @@
 
 @section('content')
 
-<!-- <table class="table table-light table-striped">
-  <thead class="table table-primary">
-    <tr>
-      <th scope="col">idProduto</th>
-      <th scope="col">idCategoria</th>
-      <th scope="col">valor</th>
-      <th scope="col">produto</th>
-      <th scope="col"><i title="Adicionar" class="fa-solid fa-plus" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></th>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach($temp as $produto) 
-    <tr>
-      <th scope="row">{{ $produto->idProduto }}</th>
-      <td>{{ $produto->idCategoria }}</td>
-      <td>{{ $produto->valor }}</td>
-      <td>{{ $produto->produto }}</td>
-      <td><i title="Editar" class="fa-solid fa-pen-to-square"></i></td>
-    </tr>
-    @endforeach
-  </tbody>
-</table> -->
 <div class="row doidera-braba black-text">
   @foreach ($temp as $produto)
     <div class="col-2">
         <div class="card cardard" style="width: 14rem;">
             <img src="/img/produtos/{{ $produto->foto }}" width='100' height='50' class="card-img-top" alt="...">
-            <hr>
+            <hr> 
             <div class="card-body">
                 <h5 class="card-title">{{ $produto->produto  }}</h5>
                 <p>{{ $produto->categoria }}</p>
@@ -96,6 +74,27 @@
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Cadastrar
   </button>
+  <form action="{{url('/produto/filter')}}" method="post">
+
+        {{ csrf_field() }}
+
+          <select name="idCategoria" id="idCategoria">
+
+            @foreach($temp as $categoria)
+
+              <option value="{{$categoria -> idCategoria}}">{{$categoria -> categoria}}</option>
+
+            @endforeach
+
+          </select>
+
+          <div class="modal-footer">
+
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+
+          </div>
+
+        </form>
 </div>
 
 

@@ -48,7 +48,6 @@
   </div>
 </nav>
 
-
     <div class="centered">
         @yield('content')
     </div>

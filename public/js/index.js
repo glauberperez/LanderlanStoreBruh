@@ -16,3 +16,22 @@
       }, false)
     })
   })()
+
+const getCep = async () => {
+  const cep = window.document.querySelectorAll('#cep')
+
+  await fetch(`https://viacep.com.br/ws/${cep}/json/`, {
+    method: 'get',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      'Access-Control-Allow-Origina': '*'
+    },
+    body: JSON.stringify({ cep }),
+  })
+    .then()
+}
+
+window.addEventListener('click', () => {
+  
+})

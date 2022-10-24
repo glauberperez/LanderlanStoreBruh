@@ -39,9 +39,7 @@ Route::get('/pedido', function () {
     return view('pedido');
 });
 
-Route::get('/dashboard', function () {
-    return view('/ademar/dashboard');
-});
+Route::get('/dashboard', [Dashboard::class, 'index']);
 
 // cadastros
 Route::post('/cliente', [Cliente::class, 'store'])->name('store');
@@ -51,6 +49,8 @@ Route::post('/categoria', [Categoria::class, 'store'])->name('store');
 Route::post('/produto', [Produto::class, 'store'])->name('store');
 
 Route::post('/pedido', [Pedido::class, 'store'])->name('store');
+
+Route::post('/produto/filter', [Produto::class, 'show'])->name('show');
 
 
 // deletes

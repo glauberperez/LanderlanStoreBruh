@@ -101,6 +101,7 @@
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">CEP</label>
           <input type="text" class="form-control" data-mask='cep' id="cep" name="cep" aria-describedby="emailHelp">
+          <button>Foda</button>
         </div>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Estado</label>

@@ -6,14 +6,17 @@ use Illuminate\Http\Request;
 
 class Dashboard extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
+     /*
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $temp = 1; //fazer selectola aqui inner joinha de linha
+        $temp1 = 2; //selectola da pizza 1
+        $temp2 = 3; //selectola da pizza 2
+
+
+        return view('dashboard', compact('temp', 'temp1', 'temp2'));
     }
 
     /**
