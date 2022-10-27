@@ -40,6 +40,16 @@ Route::get('/pedido', function () {
 });
 
 Route::get('/dashboard', [Dashboard::class, 'index']);
+Route::get('/getAllUsers', [Dashboard::class, 'getAllUsers']);
+Route::get('/getAllPedidos', [Dashboard::class, 'getAllPedidos']);
+Route::get('/getAllPedidosLastYear', [Dashboard::class, 'getAllPedidosLastYear']);
+Route::get('/getAllPedidosLastMonth', [Dashboard::class, 'getAllPedidosLastMonth']);
+Route::get('/getAllPedidosLastWeek', [Dashboard::class, 'getAllPedidosLastWeek']);
+Route::get('/getAllPedidosLastDay', [Dashboard::class, 'getAllPedidosLastDay']);
+Route::get('/getTop5SellingCategories', [Dashboard::class, 'getTop5SellingCategories']);
+Route::get('/getTop5SellingProducts', [Dashboard::class, 'getTop5SellingProducts']);
+Route::get('/getTop5SellingUsers', [Dashboard::class, 'getTop5SellingUsers']);
+
 
 // gets
 Route::get('/cliente/get', [Cliente::class, 'get'])->name('getClientes');
