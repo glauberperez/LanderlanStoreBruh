@@ -16,49 +16,74 @@
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
 
+    const getAllPedidos = async () => {
+      await fetch('http://127.0.0.1:8000/getAllPedidos', {
+          method: 'GET',
+          mode: 'no-cors',
+          headers: new Headers({
+            Accept: 'application/json',
+          })
+            .then(response => response.json())
+            .then(json => {
+              console.table(json)
+
+              return json
+            })
+            .catch(error => console.error(error))
+        })
+    }
+
     function drawChart() {
 
-        var linegraph_data = google.visualization.arrayToDataTable([
+        let pedidos_data = google.visualization.arrayToDataTable([
           ['Data', 'Pedidos por data'],
-          ['data',      <?php echo($temp) ?>],
-          ['data',       <?php echo($temp) ?>],
-          ['data',      <?php echo($temp) ?>],
-          ['data',       <?php echo($temp) ?>],
-          ['data',      <?php echo($temp) ?>],
-          ['data',       <?php echo($temp) ?>],
+          ['data',      <?php echo($pedidos) ?>],
+          ['data',       <?php echo($pedidos) ?>],
+          ['data',      <?php echo($pedidos) ?>],
+          ['data',       <?php echo($pedidos) ?>],
+          ['data',      <?php echo($pedidos) ?>],
+          ['data',       <?php echo($pedidos) ?>],
         ]);
 
-        var pizzagraph_data = google.visualization.arrayToDataTable([
+        let produtos_data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-          ['Work',     <?php echo($temp1) ?>],
-          ['Eat',      <?php echo($temp1) ?>],
-          ['Commute',  <?php echo($temp1) ?>],
-          ['Watch TV', <?php echo($temp1) ?>],
-          ['Sleep',    <?php echo($temp1) ?>]
+          ['Work',     <?php echo($produtos) ?>],
+          ['Eat',      <?php echo($produtos) ?>],
+          ['Commute',  <?php echo($produtos) ?>],
+          ['Watch TV', <?php echo($produtos) ?>],
+          ['Sleep',    <?php echo($produtos) ?>]
         ]);
 
-        var pizzagraph1_data = google.visualization.arrayToDataTable([
+        let clientes_data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-          ['Work',     <?php echo($temp2) ?>],
-          ['Eat',      <?php echo($temp2) ?>],
-          ['Commute',  <?php echo($temp2) ?>],
-          ['Watch TV', <?php echo($temp2) ?>],
-          ['Sleep',    <?php echo($temp2) ?>]
+          ['Work',     <?php echo($clientes) ?>],
+          ['Eat',      <?php echo($clientes) ?>],
+          ['Commute',  <?php echo($clientes) ?>],
+          ['Watch TV', <?php echo($clientes) ?>],
+          ['Sleep',    <?php echo($clientes) ?>]
         ]);
 
-        var options = {
-          title: 'My Daily Activities'
+        let clientes_options = {
+          title: 'Todos os clientes'
         };
 
-        var chart = new google.visualization.LineChart(document.getElementById('linegraph'));
-        var chart1 = new google.visualization.PieChart(document.getElementById('piechart1'));
-        var chart2 = new google.visualization.PieChart(document.getElementById('piechart2'));
+        let pedidos_options = {
+          title: 'Total de pedidos'
+        };
+
+        let produtos_options = {
+          title: 'Total de produtos cadastrados'
+        };
+
+        const clientes_chart = new google.visualization.LineChart(document.querySelector('#clientes_chart'));
+        const pedidos_chart = new google.visualization.PieChart(document.querySelector('#pedidos_chart'));
+        const produtos_chart = new google.visualization.PieChart(document.querySelector('#produtos_chart'));
 
 
 
-        chart.draw(linegraph_data, options);
-        chart1.draw(pizzagraph_data, options);
-        chart2.draw(pizzagraph_data1, options);
+        clientes_chart.draw(clientes_data, clientes_options);
+        pedidos_chart.draw(pedidos_data, pedidos_options);
+        produtos_chart.draw(produtos_data, produtos_options);
     }
 </script>
 

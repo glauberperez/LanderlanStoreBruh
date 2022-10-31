@@ -37,7 +37,7 @@ Route::get('/produto', function () {
 
 Route::get('/pedido', function () {
     return view('pedido');
-});
+}); 
 
 // dashboard
 Route::get('/dashboard', [Dashboard::class, 'index']);

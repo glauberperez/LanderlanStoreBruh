@@ -18,8 +18,11 @@ class Dashboard extends Controller
     public function index()
     {
         $pedidos = Pedido::all();
+        $produtos = Produto::all();
+        $clientes = Cliente::all();
+        $categorias = Categoria::all();
 
-        return view('dashboard', compact('pedidos'));
+        return view('dashboard', compact('pedidos', 'produtos', 'clientes', 'categorias'));
     }
 
     /**
@@ -133,9 +136,9 @@ class Dashboard extends Controller
 
     public function getTop5SellingCategories(): JsonResponse
     {
-        $pedidos = Pedido::selectRaw('tbproduto.idCategoria, tbproduto.nome, sum(tbpedido.quantidade) as quantidade')
+        $pedidos = Pedido::selectRaw('tbproduto.idCategoria, tbproduto.produto, sum(tbpedido.quantidade) as quantidade')
             ->join('tbproduto', 'tbproduto.idProduto', '=', 'tbpedido.idProduto')
-            ->groupBy('tbproduto.idCategoria', 'tbproduto.nome')
+            ->groupBy('tbproduto.idCategoria', 'tbproduto.produto')
             ->orderBy('quantidade', 'desc')
             ->limit(5)
             ->get();
@@ -145,9 +148,9 @@ class Dashboard extends Controller
 
     public function getTop5SellingProducts(): JsonResponse
     {
-        $pedidos = Pedido::selectRaw('tbproduto.idProduto, tbproduto.nome, sum(tbpedido.quantidade) as quantidade')
+        $pedidos = Pedido::selectRaw('tbproduto.idProduto, tbproduto.produto, sum(tbpedido.quantidade) as quantidade')
             ->join('tbproduto', 'tbproduto.idProduto', '=', 'tbpedido.idProduto')
-            ->groupBy('tbproduto.idProduto', 'tbproduto.nome')
+            ->groupBy('tbproduto.idProduto', 'tbproduto.produto')
             ->orderBy('quantidade', 'desc')
             ->limit(5)
             ->get();
