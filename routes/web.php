@@ -39,6 +39,7 @@ Route::get('/pedido', function () {
     return view('pedido');
 });
 
+// dashboard
 Route::get('/dashboard', [Dashboard::class, 'index']);
 Route::get('/getAllUsers', [Dashboard::class, 'getAllUsers']);
 Route::get('/getAllPedidos', [Dashboard::class, 'getAllPedidos']);
@@ -56,6 +57,7 @@ Route::get('/cliente/get', [Cliente::class, 'get'])->name('getClientes');
 Route::get('/categoria/get', [Categoria::class, 'get']);
 Route::get('/produto/get', [Produto::class, 'get']);
 Route::get('/pedido/get', [Pedido::class, 'get']);
+Route::get('/pedido/pdf', [Pedido::class, 'createPDF'])->name('createPDF');
 
 // cadastros
 Route::post('/cliente', [Cliente::class, 'store'])->name('store');

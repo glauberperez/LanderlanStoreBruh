@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pedido as ModelsPedido;
 use Illuminate\Http\Request;
+use PDF;
 
 class Pedido extends Controller
 {
@@ -23,6 +24,17 @@ class Pedido extends Controller
 
         return view('pedido', compact('temp'));
     }
+
+      // Generate PDF
+      public function createPDF() {
+        // retreive all records from db
+        $data = ModelsPedido::all();
+        // share data to view
+        view()->share('employee',$data);
+        $pdf = PDF::loadView('pdf_view', $data);
+        // download PDF file with download method
+        return $pdf->download('pdf_file.pdf');
+      }
 
     /**
      * Show the form for creating a new resource.
