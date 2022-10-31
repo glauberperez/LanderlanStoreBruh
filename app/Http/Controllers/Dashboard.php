@@ -148,12 +148,14 @@ class Dashboard extends Controller
 
     public function getTop5SellingProducts(): JsonResponse
     {
-        $pedidos = Pedido::selectRaw('tbproduto.idProduto, tbproduto.produto, sum(tbpedido.quantidade) as quantidade')
+        $pedidos = Pedido::selectRaw('tbproduto.idProduto, tbcategoria.categoria, tbproduto.produto, sum(tbpedido.quantidade) as quantidade')
             ->join('tbproduto', 'tbproduto.idProduto', '=', 'tbpedido.idProduto')
+            ->join('tbcategoria', 'tbcategoria.idCategoria', '=', 'tbproduto.idCategoria')
             ->groupBy('tbproduto.idProduto', 'tbproduto.produto')
             ->orderBy('quantidade', 'desc')
             ->limit(5)
             ->get();
+
 
         return response()->json($pedidos);
     }

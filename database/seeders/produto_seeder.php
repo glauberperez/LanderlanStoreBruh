@@ -21,26 +21,32 @@ class produto_seeder extends Seeder
                 'produto' => 'Trembolona',
                 'valor' => 1,
                 'idCategoria' => 1,
+                'foto' => 'sunglasses.jpg'
             ],
             [
                 'produto' => 'Durateston',
                 'valor' => 2,
                 'idCategoria' => 2,
+                'foto' => 'sunglasses.jpg'
             ],
             [
                 'produto' => 'Anavar Oxandrolona',
                 'valor' => 3,
                 'idCategoria' => 3,
+                'foto' => 'sunglasses.jpg'
             ],
             [
                 'produto' => 'Stanozolol Winstrol',
                 'valor' => 4,
                 'idCategoria' => 4,
+                'foto' => 'sunglasses.jpg'
             ],
             [
                 'produto' => 'Deca Durabolin',
                 'valor' => 5,
                 'idCategoria' => 5,
+                'foto' => 'sunglasses.jpg'
+
             ]
         );
 

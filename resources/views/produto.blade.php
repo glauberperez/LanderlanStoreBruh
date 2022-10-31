@@ -6,7 +6,7 @@
   @foreach ($temp as $produto)
     <div class="col-2">
         <div class="card cardard" style="width: 14rem;">
-            <img src="/img/produtos/{{ $produto->foto }}" width='100' height='50' class="card-img-top" alt="...">
+            <img src="img/produtos/{{ $produto->foto }}" width='120' height='120' class="card-img-top" alt="...">
             <hr> 
             <div class="card-body">
                 <h5 class="card-title">{{ $produto->produto  }}</h5>

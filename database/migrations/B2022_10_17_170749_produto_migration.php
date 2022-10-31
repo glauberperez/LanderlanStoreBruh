@@ -18,6 +18,7 @@ return new class extends Migration
             $table->increments('idProduto');
             $table->string('produto')->unique()->nullable(false)->default('Produto');
             $table->string('valor')->nullable(false)->default(0);
+            $table->string('foto')->nullable(true)->default('sunglasses.jpg');
             $table->unsignedInteger('idCategoria');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));

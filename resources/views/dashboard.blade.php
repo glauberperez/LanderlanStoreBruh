@@ -4,11 +4,11 @@
 
 <table>
     <tr>
-        <td><div id="linegraph" style="width: 700px; height: 400px;"></div></td>
-        <td><div id="piechart1" style="width: 400px; height: 400px;"></div></td>
+        <td><div id="clientes_chart" style="width: 700px; height: 400px;"></div></td>
+        <td><div id="pedidos_chart" style="width: 400px; height: 400px;"></div></td>
     </tr>
     <tr>
-        <td><div id="piechart2" style="width: 400px; height: 400px;"></div></td>
+        <td><div id="produtos_chart" style="width: 400px; height: 400px;"></div></td>
     </tr>
 </table>
 
@@ -16,21 +16,50 @@
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
 
-    const getAllPedidos = async () => {
-      await fetch('http://127.0.0.1:8000/getAllPedidos', {
+    const getTop5SellingProducts = async () => {
+      await fetch('http://127.0.0.1:8000/getTop5SellingProducts', {
           method: 'GET',
           mode: 'no-cors',
           headers: new Headers({
             Accept: 'application/json',
           })
-            .then(response => response.json())
+        })
+        .then(response => response.json())
             .then(json => {
-              console.table(json)
+              let data = Array()
 
-              return json
+              json.forEach(item => {
+                data.push(item.produto)
+              })
+              
+              console.table(data)
+
+              return data
             })
             .catch(error => console.error(error))
+    }
+
+    const getTop5SellingCategories = async () => {
+      await fetch('http://127.0.0.1:8000/getTop5SellingCategories', {
+          method: 'GET',
+          mode: 'no-cors',
+          headers: new Headers({
+            Accept: 'application/json',
+          })
         })
+        .then(response => response.json())
+            .then(json => {
+              let data = Array()
+
+              json.forEach(item => {
+                data.push(item)
+              })
+              
+              console.table(data)
+
+              return data
+            })
+            .catch(error => console.error(error))
     }
 
     function drawChart() {
@@ -44,6 +73,13 @@
           ['data',      <?php echo($pedidos) ?>],
           ['data',       <?php echo($pedidos) ?>],
         ]);
+
+        let top_selling_products = getTop5SellingProducts()
+        console.log(top_selling_products)
+
+        let top_selling_categories = getTop5SellingCategories()
+        console.log(top_selling_categories)
+
 
         let produtos_data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
@@ -82,7 +118,7 @@
 
 
         clientes_chart.draw(clientes_data, clientes_options);
-        pedidos_chart.draw(pedidos_data, pedidos_options);
+        pedidos_chart.draw(top_selling, pedidos_options);
         produtos_chart.draw(produtos_data, produtos_options);
     }
 </script>
