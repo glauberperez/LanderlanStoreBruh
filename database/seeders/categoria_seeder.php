@@ -35,6 +35,6 @@ class categoria_seeder extends Seeder
             ]
         );
 
-        Categoria::factory()->count(25)->create();
+        Categoria::factory()->count(50)->create();
     }
 }

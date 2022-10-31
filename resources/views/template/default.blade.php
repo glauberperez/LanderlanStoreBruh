@@ -52,15 +52,6 @@
         @yield('content')
     </div>
 
-<!-- Footer -->
-<footer class="text-center font-weight-bold text-white-start text-muted bah">
-  <div class="text-white font-weight-bold text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
-     © 6969 Copyright:
-    <a class="fw-bol1d text-white font-weight-bold" href="https://www.gsuplementos.com.br/?gclid=Cj0KCQjw0oyYBhDGARIsAMZEuMsI_sjA89nFx8_arcpUWN2nCLyUZ9wUtW8zK603_UOafSV0jemIeN0aAnQuEALw_wcB">Durateston.com</a>
-  </div>
-  <!-- Copyright -->
-</footer>
-<!-- Footer -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.7/jquery.inputmask.min.js" integrity="sha512-jTgBq4+dMYh73dquskmUFEgMY5mptcbqSw2rmhOZZSJjZbD2wMt0H5nhqWtleVkyBEjmzid5nyERPSNBafG4GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>

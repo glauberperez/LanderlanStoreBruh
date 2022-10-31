@@ -84,6 +84,6 @@ class cliente_seeder extends Seeder
             ]
         );
 
-        Cliente::factory()->count(25)->create();
+        Cliente::factory()->count(50)->create();
     }
 }
