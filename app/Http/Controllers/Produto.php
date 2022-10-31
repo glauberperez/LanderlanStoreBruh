@@ -53,10 +53,18 @@ class Produto extends Controller
         if($request->hasFile("foto") && $request->file("foto")->isValid()) {
             $requestImage = $request->foto;
 
-            $extension = $requestImage->extension();
+            if ($requestImage) {
 
-            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
-            $request->foto->move(public_path('img/produtos'), $imageName);
+                $extension = $requestImage->extension();
+                
+                $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+                $request->foto->move(public_path('img/produtos'), $imageName);
+            } else {
+                $extension = $requestImage->extension();
+                
+                $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+                $request->foto->move(public_path('img/produtos'), 'sunglasses.jpg');
+            }
         }
 
         $store = $this->produto->create([
