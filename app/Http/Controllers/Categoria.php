@@ -63,7 +63,10 @@ class Categoria extends Controller
      */
     public function show($id)
     {
-        //
+        $temp = $this->categoria->find($id);
+        $produtos = Produto::where('categoria_id', $id)->get();
+
+        return view('categoriaShow', compact('temp', 'produtos'));
     }
 
     /**
@@ -122,5 +125,34 @@ class Categoria extends Controller
         $temp = $this->categoria->where('categoria', 'LIKE', "%{$request->search}%")->get();
 
         return view('categoria', compact('temp', 'search'));
+    }
+
+    // APIs
+    public function getAllCategories()
+    {
+        $temp = $this->categoria->all();
+
+        return response()->json($temp);
+    }
+
+    public function getCategoryById($id)
+    {
+        $temp = $this->categoria->find($id);
+
+        return response()->json($temp);
+    }
+
+    public function getCategorieByCategoryName($categoryName)
+    {
+        $temp = $this->categoria->where('categoria', $categoryName)->get();
+
+        return response()->json($temp);
+    }
+
+    public function getCategoriesTotal()
+    {
+        $temp = $this->categoria->count();
+
+        return response()->json($temp);
     }
 }

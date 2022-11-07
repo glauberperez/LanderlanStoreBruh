@@ -23,10 +23,10 @@ class Produto extends Controller
         //$temp = $this->produto->all();
 
         $temp = ModelsProduto::select('tbproduto.produto', 'tbproduto.idProduto', 'tbproduto.foto', 'tbproduto.valor', 'tbcategoria.categoria')
-        ->join('tbcategoria', 'tbproduto.idCategoria', '=', 'tbcategoria.idCategoria')
-        ->get();
+            ->join('tbcategoria', 'tbproduto.idCategoria', '=', 'tbcategoria.idCategoria')
+            ->get();
 
-        
+
         return view('produto', compact('temp'));
     }
 
@@ -50,18 +50,18 @@ class Produto extends Controller
     {
         $imageName = "";
 
-        if($request->hasFile("foto") && $request->file("foto")->isValid()) {
+        if ($request->hasFile("foto") && $request->file("foto")->isValid()) {
             $requestImage = $request->foto;
 
             if ($requestImage) {
 
                 $extension = $requestImage->extension();
-                
+
                 $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
                 $request->foto->move(public_path('img/produtos'), $imageName);
             } else {
                 $extension = $requestImage->extension();
-                
+
                 $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
                 $request->foto->move(public_path('img/produtos'), 'sunglasses.jpg');
             }
@@ -90,10 +90,10 @@ class Produto extends Controller
         dd($request);
 
         $temp = ModelsProduto::select('tbproduto.produto', 'tbproduto.idProduto', 'tbproduto.foto', 'tbproduto.valor', 'tbcategoria.categoria')
-        ->join('tbcategoria', 'tbproduto.idCategoria', '=', 'tbcategoria.'.$request->idCategoria)
-        ->get();
+            ->join('tbcategoria', 'tbproduto.idCategoria', '=', 'tbcategoria.' . $request->idCategoria)
+            ->get();
 
-        
+
         return view('produto', compact('temp', 'categoria'));
     }
 
@@ -125,7 +125,7 @@ class Produto extends Controller
         if ($update) {
             return redirect()->route('produto.index');
         }
-        
+
         return redirect()->back();
     }
 
@@ -138,13 +138,117 @@ class Produto extends Controller
     public function destroy($id)
     {
         $pedido = ModelsPedido::where('idProduto', $id)->delete();
-        
+
         $destroy = ModelsProduto::where('idProduto', $id)->delete();
 
         if ($destroy && $pedido) {
             return redirect()->route('produto.index');
-        } 
+        }
 
         return redirect()->route('produto.index');
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->search;
+
+        $temp = ModelsProduto::select('tbproduto.produto', 'tbproduto.idProduto', 'tbproduto.foto', 'tbproduto.valor', 'tbcategoria.categoria')
+            ->join('tbcategoria', 'tbproduto.idCategoria', '=', 'tbcategoria.idCategoria')
+            ->where('tbproduto.produto', 'like', "%{$search}%")
+            ->get();
+
+        return view('produto', compact('temp'));
+    }
+
+    public function filter(Request $request)
+    {
+        $filter = $request->filter;
+
+        $temp = ModelsProduto::select('tbproduto.produto', 'tbproduto.idProduto', 'tbproduto.foto', 'tbproduto.valor', 'tbcategoria.categoria')
+            ->join('tbcategoria', 'tbproduto.idCategoria', '=', 'tbcategoria.idCategoria')
+            ->where('tbcategoria.idCategoria', '=', $filter)
+            ->get();
+
+        return view('produto', compact('temp'));
+    }
+
+    public function order(Request $request)
+    {
+        $order = $request->order;
+
+        $temp = ModelsProduto::select('tbproduto.produto', 'tbproduto.idProduto', 'tbproduto.foto', 'tbproduto.valor', 'tbcategoria.categoria')
+            ->join('tbcategoria', 'tbproduto.idCategoria', '=', 'tbcategoria.idCategoria')
+            ->orderBy('tbproduto.valor', $order)
+            ->get();
+
+        return view('produto', compact('temp'));
+    }
+
+    public function getAllProducts()
+    {
+        $temp = ModelsProduto::select('tbproduto.produto', 'tbproduto.idProduto', 'tbproduto.foto', 'tbproduto.valor', 'tbcategoria.categoria')
+            ->join('tbcategoria', 'tbproduto.idCategoria', '=', 'tbcategoria.idCategoria')
+            ->get();
+
+        return view('produto', compact('temp'));
+    }
+
+    public function getProductsByCategory($id)
+    {
+        $temp = ModelsProduto::select('tbproduto.produto', 'tbproduto.idProduto', 'tbproduto.foto', 'tbproduto.valor', 'tbcategoria.categoria')
+            ->join('tbcategoria', 'tbproduto.idCategoria', '=', 'tbcategoria.idCategoria')
+            ->where('tbcategoria.idCategoria', '=', $id)
+            ->get();
+
+        return view('produto', compact('temp'));
+    }
+
+    public function getProductById($id)
+    {
+        $temp = ModelsProduto::select('tbproduto.produto', 'tbproduto.idProduto', 'tbproduto.foto', 'tbproduto.valor', 'tbcategoria.categoria')
+            ->join('tbcategoria', 'tbproduto.idCategoria', '=', 'tbcategoria.idCategoria')
+            ->where('tbproduto.idProduto', '=', $id)
+            ->get();
+
+        return view('produto', compact('temp'));
+    }
+
+    public function getProductByName($name)
+    {
+        $temp = ModelsProduto::select('tbproduto.produto', 'tbproduto.idProduto', 'tbproduto.foto', 'tbproduto.valor', 'tbcategoria.categoria')
+            ->join('tbcategoria', 'tbproduto.idCategoria', '=', 'tbcategoria.idCategoria')
+            ->where('tbproduto.produto', 'like', "%{$name}%")
+            ->get();
+
+        return view('produto', compact('temp'));
+    }
+
+    public function getProductByPrice($price)
+    {
+        $temp = ModelsProduto::select('tbproduto.produto', 'tbproduto.idProduto', 'tbproduto.foto', 'tbproduto.valor', 'tbcategoria.categoria')
+            ->join('tbcategoria', 'tbproduto.idCategoria', '=', 'tbcategoria.idCategoria')
+            ->where('tbproduto.valor', '=', $price)
+            ->get();
+
+        return view('produto', compact('temp'));
+    }
+
+    public function getProductByPriceRange($min, $max)
+    {
+        $temp = ModelsProduto::select('tbproduto.produto', 'tbproduto.idProduto', 'tbproduto.foto', 'tbproduto.valor', 'tbcategoria.categoria')
+            ->join('tbcategoria', 'tbproduto.idCategoria', '=', 'tbcategoria.idCategoria')
+            ->whereBetween('tbproduto.valor', [$min, $max])
+            ->get();
+
+        return view('produto', compact('temp'));
+    }
+
+    public function getProductsTotal()
+    {
+        $temp = ModelsProduto::select('tbproduto.produto', 'tbproduto.idProduto', 'tbproduto.foto', 'tbproduto.valor', 'tbcategoria.categoria')
+            ->join('tbcategoria', 'tbproduto.idCategoria', '=', 'tbcategoria.idCategoria')
+            ->count();
+
+        return view('produto', compact('temp'));
     }
 }
