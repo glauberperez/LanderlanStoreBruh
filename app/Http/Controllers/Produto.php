@@ -169,7 +169,7 @@ class Produto extends Controller
             ->where('tbcategoria.idCategoria', '=', $filter)
             ->get();
 
-        return view('produto', compact('temp'));
+        return response()->json($temp);
     }
 
     public function order(Request $request)
@@ -181,7 +181,7 @@ class Produto extends Controller
             ->orderBy('tbproduto.valor', $order)
             ->get();
 
-        return view('produto', compact('temp'));
+        return response()->json($temp);
     }
 
     public function getAllProducts()
@@ -190,7 +190,7 @@ class Produto extends Controller
             ->join('tbcategoria', 'tbproduto.idCategoria', '=', 'tbcategoria.idCategoria')
             ->get();
 
-        return view('produto', compact('temp'));
+        return response()->json($temp);
     }
 
     public function getProductsByCategory($id)
@@ -200,7 +200,7 @@ class Produto extends Controller
             ->where('tbcategoria.idCategoria', '=', $id)
             ->get();
 
-        return view('produto', compact('temp'));
+        return response()->json($temp);
     }
 
     public function getProductById($id)
@@ -210,7 +210,7 @@ class Produto extends Controller
             ->where('tbproduto.idProduto', '=', $id)
             ->get();
 
-        return view('produto', compact('temp'));
+        return response()->json($temp);
     }
 
     public function getProductByName($name)
@@ -220,7 +220,7 @@ class Produto extends Controller
             ->where('tbproduto.produto', 'like', "%{$name}%")
             ->get();
 
-        return view('produto', compact('temp'));
+        return response()->json($temp);
     }
 
     public function getProductByPrice($price)
@@ -230,7 +230,7 @@ class Produto extends Controller
             ->where('tbproduto.valor', '=', $price)
             ->get();
 
-        return view('produto', compact('temp'));
+        return response()->json($temp);
     }
 
     public function getProductByPriceRange($min, $max)
@@ -240,7 +240,7 @@ class Produto extends Controller
             ->whereBetween('tbproduto.valor', [$min, $max])
             ->get();
 
-        return view('produto', compact('temp'));
+        return response()->json($temp);
     }
 
     public function getProductsTotal()
@@ -249,6 +249,6 @@ class Produto extends Controller
             ->join('tbcategoria', 'tbproduto.idCategoria', '=', 'tbcategoria.idCategoria')
             ->count();
 
-        return view('produto', compact('temp'));
+        return response()->json($temp);
     }
 }

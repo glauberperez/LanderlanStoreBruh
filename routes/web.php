@@ -37,7 +37,7 @@ Route::get('/produto', function () {
 
 Route::get('/pedido', function () {
     return view('pedido');
-}); 
+});
 
 // dashboard
 Route::get('/dashboard', [Dashboard::class, 'index']);
@@ -89,6 +89,22 @@ Route::put('/categoria/{id}', [Categoria::class, 'update'])->name('update');
 Route::put('/produto/{id}', [Produto::class, 'update'])->name('update');
 
 Route::put('/pedido/{id}', [Pedido::class, 'update'])->name('update');
+
+// api
+Route::get('/getAllCategories', [Categoria::class, 'getAllCategories']);
+Route::get('/getAllProducts', [Produto::class, 'getAllProducts']);
+Route::get('/getCategoriesTotal', [Categoria::class, 'getCategoriesTotal']);
+Route::get('/getProductsTotal', [Produto::class, 'getProductsTotal']);
+Route::get('/getCategoryById/{id}', [Categoria::class, 'getCategoryById']);
+Route::get('/getProductById/{id}', [Produto::class, 'getProductById']);
+Route::get('/getProductsByCategory/{id}', [Produto::class, 'getProductsByCategory']);
+Route::get('/getProductByName/{name}', [Produto::class, 'getProductByName']);
+Route::get('/getProductByPrice/{price}', [Produto::class, 'getProductByPrice']);
+
+// others
+Route::get('/getProductByPriceRange/{min}/{max}', [Produto::class, 'getProductByPriceRange']);
+Route::post('/order', [Produto::class, 'order'])->name('order');
+Route::post('/filter', [Produto::class, 'filter'])->name('filter');
 
 // resources
 Route::resource('cliente', Cliente::class);

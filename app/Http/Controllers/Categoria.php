@@ -137,7 +137,7 @@ class Categoria extends Controller
 
     public function getCategoryById($id)
     {
-        $temp = $this->categoria->find($id);
+        $temp = $this->categoria->where('idCategoria', $id)->get();
 
         return response()->json($temp);
     }
