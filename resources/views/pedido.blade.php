@@ -16,7 +16,7 @@
     </tr>
   </thead>
   <tbody>
-    @foreach($temp as $pedido) 
+    @foreach($temp as $pedido)
     <tr>
       <th scope="row">{{ $pedido->idPedido }}</th>
       <td>{{ $pedido->idProduto }}</td>
@@ -46,38 +46,39 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <form method="POST" enctype="multipart/form-data" action="{{ route('pedido.store') }}" class="black-text">
-        @csrf
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">idProduto</label>
-          <input type="number" class="form-control" id="exampleInputEmail1" name="idProduto" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">idCategoria</label>
-          <input type="number" class="form-control" id="exampleInputEmail1" name="idCategoria" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">idCliente</label>
-          <input type="number" class="form-control" id="exampleInputEmail1" name="idCliente" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">descricao</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" name="descricao" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">valor</label>
-          <input type="number" class="form-control" id="exampleInputEmail1" name="valor" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">data</label>
-          <input type="date" class="form-control" id="exampleInputEmail1" name="data" aria-describedby="emailHelp">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+        <form method="POST" enctype="multipart/form-data" action="{{ route('pedido.store') }}" class="black-text">
+          @csrf
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">idProduto</label>
+            <input type="number" class="form-control" id="exampleInputEmail1" name="idProduto" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">idCategoria</label>
+            <input type="number" class="form-control" id="exampleInputEmail1" name="idCategoria" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">idCliente</label>
+            <input type="number" class="form-control" id="exampleInputEmail1" name="idCliente" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">descricao</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" name="descricao" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">valor</label>
+            <input type="number" class="form-control" id="exampleInputEmail1" name="valor" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">data</label>
+            <input type="date" class="form-control" id="exampleInputEmail1" name="data" aria-describedby="emailHelp">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
       </div>
     </div>
   </div>
 </div>
 
+<a href="{{ route(pedido.createPDF) }}"><button class="btn btn-primary">Gerar relatório</button></a>
 
 @endsection

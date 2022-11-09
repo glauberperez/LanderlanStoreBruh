@@ -20,6 +20,11 @@
     margin-right: 5px;
 }
 
+.navbar-expand-lg {
+    background-color: rgba(87, 86, 86, 0.5);
+    z-index: 1;
+}
+
 .black-text {
     color:rgb(12, 12, 12);
 }

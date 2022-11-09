@@ -25,16 +25,17 @@ class Pedido extends Controller
         return view('pedido', compact('temp'));
     }
 
-      // Generate PDF
-      public function createPDF() {
+    // Generate PDF
+    public function createPDF()
+    {
         // retreive all records from db
         $data = ModelsPedido::all();
         // share data to view
-        view()->share('employee',$data);
-        $pdf = PDF::loadView('pdf_view', $data);
+        view()->share('pedido', $data);
+        $pdf = PDF::loadView('pedido', $data);
         // download PDF file with download method
         return $pdf->download('pdf_file.pdf');
-      }
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -76,7 +77,6 @@ class Pedido extends Controller
      */
     public function show($id)
     {
-        
     }
 
     /**
@@ -116,7 +116,7 @@ class Pedido extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {        
+    {
         $destroy = ModelsPedido::where('idPedido', $id)->delete();
 
         if ($destroy) {
