@@ -3,124 +3,136 @@
 @section('content')
 
 <table>
-    <tr>
-        <td><div id="clientes_chart" style="width: 700px; height: 400px;"></div></td>
-        <td><div id="pedidos_chart" style="width: 400px; height: 400px;"></div></td>
-    </tr>
-    <tr>
-        <td><div id="produtos_chart" style="width: 400px; height: 400px;"></div></td>
-    </tr>
+  <tr>
+    <td>
+      <div id="clientes_chart" style="width: 700px; height: 400px;"></div>
+    </td>
+    <td>
+      <div id="pedidos_chart" style="width: 400px; height: 400px;"></div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div id="produtos_chart" style="width: 400px; height: 400px;"></div>
+    </td>
+  </tr>
 </table>
 
 <script>
-    google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
+  google.charts.load('current', {
+    'packages': ['corechart']
+  });
+  google.charts.setOnLoadCallback(drawChart);
 
-    const getTop5SellingProducts = async () => {
-      await fetch('http://127.0.0.1:8000/getTop5SellingProducts', {
-          method: 'GET',
-          mode: 'no-cors',
-          headers: new Headers({
-            Accept: 'application/json',
-          })
+  const getTop5SellingProducts = async () => {
+    await fetch('http://127.0.0.1:8000/getTop5SellingProducts', {
+        method: 'GET',
+        mode: 'no-cors',
+        headers: new Headers({
+          Accept: 'application/json',
         })
-        .then(response => response.json())
-            .then(json => {
-              let data = Array()
+      })
+      .then(response => response.json())
+      .then(json => {
+        let data = Array()
 
-              json.forEach(item => {
-                data.push(item.produto)
-              })
-              
-              console.table(data)
+        console.log(json)
 
-              return data
-            })
-            .catch(error => console.error(error))
-    }
+        /*  json.forEach(item => {
+           data.push(item.produto)
+         })
 
-    const getTop5SellingCategories = async () => {
-      await fetch('http://127.0.0.1:8000/getTop5SellingCategories', {
-          method: 'GET',
-          mode: 'no-cors',
-          headers: new Headers({
-            Accept: 'application/json',
-          })
+         console.table(data)
+
+         return data */
+      })
+      .catch(error => console.error(error))
+  }
+
+  const getTop5SellingCategories = async () => {
+    await fetch('http://127.0.0.1:8000/getTop5SellingCategories', {
+        method: 'GET',
+        mode: 'no-cors',
+        headers: new Headers({
+          Accept: 'application/json',
         })
-        .then(response => response.json())
-            .then(json => {
-              let data = Array()
+      })
+      .then(response => response.json())
+      .then(json => {
+        let data = Array()
 
-              json.forEach(item => {
-                data.push(item)
-              })
-              
-              console.table(data)
+        json.forEach(item => {
+          data.push(item)
+        })
 
-              return data
-            })
-            .catch(error => console.error(error))
-    }
+        console.table(data)
 
-    function drawChart() {
+        return data
+      })
+      .catch(error => console.error(error))
+  }
 
-        let pedidos_data = google.visualization.arrayToDataTable([
-          ['Data', 'Pedidos por data'],
-          ['data',      <?php echo($pedidos) ?>],
-          ['data',       <?php echo($pedidos) ?>],
-          ['data',      <?php echo($pedidos) ?>],
-          ['data',       <?php echo($pedidos) ?>],
-          ['data',      <?php echo($pedidos) ?>],
-          ['data',       <?php echo($pedidos) ?>],
-        ]);
+  function drawChart() {
 
-        let top_selling_products = getTop5SellingProducts()
-        console.log(top_selling_products)
+    let pedidos_data = google.visualization.arrayToDataTable([
+      ['Data', 'Pedidos por data'],
+      ['data', <?php echo ($pedidos) ?>],
+      ['data', <?php echo ($pedidos) ?>],
+      ['data', <?php echo ($pedidos) ?>],
+      ['data', <?php echo ($pedidos) ?>],
+      ['data', <?php echo ($pedidos) ?>],
+      ['data', <?php echo ($pedidos) ?>],
+    ]);
 
-        let top_selling_categories = getTop5SellingCategories()
-        console.log(top_selling_categories)
+    let top_selling_products = getTop5SellingProducts()
+    console.log(top_selling_products)
+
+    let top_selling_categories = getTop5SellingCategories()
+    console.log(top_selling_categories)
+
+    // uses the data from the getTop5SellingProducts() function to populate the chart
+    /* let produtos_data = google.visualization.arrayToDataTable([
+      ['Produto', 'Quantidade vendida'],
+      ['produto', 1],
+      ['produto', 1],
+      ['produto', 1],
+      ['produto', 1],
+      ['produto', 1],
+    ]); */
+
+    produtos_data.addRows(top_selling_products[0], top_selling_products[1], top_selling_products[2])
+
+    let clientes_data = google.visualization.arrayToDataTable([
+      ['Task', 'Hours per Day'],
+      ['Work', <?php echo ($clientes) ?>],
+      ['Eat', <?php echo ($clientes) ?>],
+      ['Commute', <?php echo ($clientes) ?>],
+      ['Watch TV', <?php echo ($clientes) ?>],
+      ['Sleep', <?php echo ($clientes) ?>]
+    ]);
+
+    let clientes_options = {
+      title: 'Todos os clientes'
+    };
+
+    let pedidos_options = {
+      title: 'Total de pedidos'
+    };
+
+    let produtos_options = {
+      title: 'Total de produtos cadastrados'
+    };
+
+    const clientes_chart = new google.visualization.LineChart(document.querySelector('#clientes_chart'));
+    const pedidos_chart = new google.visualization.PieChart(document.querySelector('#pedidos_chart'));
+    const produtos_chart = new google.visualization.PieChart(document.querySelector('#produtos_chart'));
 
 
-        let produtos_data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     <?php echo($produtos) ?>],
-          ['Eat',      <?php echo($produtos) ?>],
-          ['Commute',  <?php echo($produtos) ?>],
-          ['Watch TV', <?php echo($produtos) ?>],
-          ['Sleep',    <?php echo($produtos) ?>]
-        ]);
 
-        let clientes_data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     <?php echo($clientes) ?>],
-          ['Eat',      <?php echo($clientes) ?>],
-          ['Commute',  <?php echo($clientes) ?>],
-          ['Watch TV', <?php echo($clientes) ?>],
-          ['Sleep',    <?php echo($clientes) ?>]
-        ]);
-
-        let clientes_options = {
-          title: 'Todos os clientes'
-        };
-
-        let pedidos_options = {
-          title: 'Total de pedidos'
-        };
-
-        let produtos_options = {
-          title: 'Total de produtos cadastrados'
-        };
-
-        const clientes_chart = new google.visualization.LineChart(document.querySelector('#clientes_chart'));
-        const pedidos_chart = new google.visualization.PieChart(document.querySelector('#pedidos_chart'));
-        const produtos_chart = new google.visualization.PieChart(document.querySelector('#produtos_chart'));
-
-
-
-        clientes_chart.draw(clientes_data, clientes_options);
-        pedidos_chart.draw(top_selling, pedidos_options);
-        produtos_chart.draw(produtos_data, produtos_options);
-    }
+    clientes_chart.draw(clientes_data, clientes_options);
+    pedidos_chart.draw(top_selling, pedidos_options);
+    produtos_chart.draw(produtos_data, produtos_options);
+  }
 </script>
 
 @endsection

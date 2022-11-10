@@ -136,9 +136,10 @@ class Dashboard extends Controller
 
     public function getTop5SellingCategories(): JsonResponse
     {
-        $pedidos = Pedido::selectRaw('tbproduto.idCategoria, tbproduto.produto, sum(tbpedido.quantidade) as quantidade')
+        $pedidos = Pedido::selectRaw('tbcategoria.categoria, sum(tbpedido.quantidade) as quantidade')
             ->join('tbproduto', 'tbproduto.idProduto', '=', 'tbpedido.idProduto')
-            ->groupBy('tbproduto.idCategoria', 'tbproduto.produto')
+            ->join('tbcategoria', 'tbcategoria.idCategoria', '=', 'tbproduto.idCategoria')
+            ->groupBy('tbproduto.idCategoria', 'tbcategoria.categoria')
             ->orderBy('quantidade', 'desc')
             ->limit(5)
             ->get();
@@ -151,7 +152,7 @@ class Dashboard extends Controller
         $pedidos = Pedido::selectRaw('tbproduto.idProduto, tbcategoria.categoria, tbproduto.produto, sum(tbpedido.quantidade) as quantidade')
             ->join('tbproduto', 'tbproduto.idProduto', '=', 'tbpedido.idProduto')
             ->join('tbcategoria', 'tbcategoria.idCategoria', '=', 'tbproduto.idCategoria')
-            ->groupBy('tbproduto.idProduto', 'tbproduto.produto')
+            ->groupBy('tbproduto.idProduto', 'tbproduto.produto', 'tbcategoria.categoria')
             ->orderBy('quantidade', 'desc')
             ->limit(5)
             ->get();
