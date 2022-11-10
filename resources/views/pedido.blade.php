@@ -79,6 +79,6 @@
   </div>
 </div>
 
-<a href="{{ route(pedido.createPDF) }}"><button class="btn btn-primary">Gerar relatório</button></a>
+<a href="/pedido/pdf"><button class="btn btn-primary">Gerar relatório</button></a>
 
 @endsection

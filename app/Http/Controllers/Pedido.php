@@ -28,11 +28,14 @@ class Pedido extends Controller
     // Generate PDF
     public function createPDF()
     {
-        // retreive all records from db
+        // retrieve all records from db
         $data = ModelsPedido::all();
+        $data = (array) $data;
+        $temp = $this->pedidos->all();
         // share data to view
         view()->share('pedido', $data);
-        $pdf = PDF::loadView('pedido', $data);
+        $pdf = PDF::loadView('pedido', compact('temp', 'data'))->setOptions(['defaultFont' => 'sans-serif']);
+
         // download PDF file with download method
         return $pdf->download('pdf_file.pdf');
     }
