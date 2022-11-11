@@ -13,6 +13,8 @@
         <th scope="col">estadoCivil</th>
         <th scope="col">endereco</th>
         <th scope="col">cep</th>
+        <th scope="col">numero</th>
+        <th scope="col">complemento</th>
         <th scope="col">cidade</th>
         <th scope="col">estado</th>
         <th scope="col">rg</th>
@@ -32,6 +34,8 @@
         <td>{{ $cliente->estadoCivil }}</td>
         <td>{{ $cliente->endereco }}</td>
         <td>{{ $cliente->cep }}</td>
+        <td>{{ $cliente->numero }}</td>
+        <td>{{ $cliente->complemento }}</td>
         <td>{{ $cliente->cidade }}</td>
         <td>{{ $cliente->estado }}</td>
         <td>{{ $cliente->rg }}</td>
@@ -78,7 +82,7 @@
             </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Email</label>
-              <input type="text" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+              <input type="text" class="form-control" id="email" name="email" maxlength="40" aria-describedby="emailHelp">
             </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Estado Civil</label>
@@ -86,16 +90,15 @@
             </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Celular</label>
-              <input type="text" class="form-control" id="cellphone" name="celular" aria-describedby="emailHelp">
+              <input type="text" class="form-control" id="cellphone" maxlength="16" name="celular" aria-describedby="emailHelp">
             </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Telefone</label>
-              <input type="text" class="form-control" id="phone" name="fone" aria-describedby="emailHelp">
+              <input type="text" class="form-control" id="phone" name="fone" maxlength="16" aria-describedby="emailHelp">
             </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">CEP</label>
-              <input type="text" class="form-control" data-mask='cep' id="cep" name="cep" aria-describedby="emailHelp">
-              <button>Foda</button>
+              <input type="text" class="form-control" data-mask='cep' id="cep" name="cep" aria-describedby="emailHelp" size="10" maxlength="9" onblur="pesquisacep(this.value);">
             </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Estado</label>
@@ -141,5 +144,17 @@
   </div>
 
 </div>
+
+<script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+<script src="{{ asset('js/jquery.mask.min.js') }}"></script>
+<script src="{{ asset('js/validarCep.js') }}"></script>
+<script>
+  $(document).ready(($) => {
+    $("#fone").mask("(00) 0000-00000");
+    $("#cep").mask("00000-000");
+    $("#rg").mask("000.000.000-X");
+    $("#cpf").mask("000.000.000-00");
+  });
+</script>
 
 @endsection

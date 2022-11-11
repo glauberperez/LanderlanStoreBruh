@@ -27,6 +27,8 @@ class ClienteFactory extends Factory
             'cidade' => $this->faker->city,
             'estado' => $this->faker->state,
             'cep' => $this->faker->postcode,
+            'numero' => $this->faker->buildingNumber,
+            'complemento' => $this->faker->secondaryAddress,
             'cpf' => $this->faker->unique()->regexify('[0-9]{11}'),
             'rg' => $this->faker->unique()->regexify('[0-9]{9}'),
             'dtNasc' => $this->faker->dateTime,
