@@ -37,10 +37,11 @@ class Pedido extends Controller
         $temp = ModelsPedido::paginate(10);
         // share data to view
         view()->share('pedido', $data);
-        $pdf = PDF::loadView('pedido', compact('data', 'temp'))->setOptions(['defaultFont' => 'sans-serif']);
+        $pdf = PDF::loadView('pedido', compact('temp', 'data'))->setOptions(['defaultFont' => 'sans-serif']);
+
 
         // download PDF file with download method
-        return $pdf->download('pdf_file.pdf');
+        return $pdf->download('relatorio_pedidos.pdf');
     }
 
     /**

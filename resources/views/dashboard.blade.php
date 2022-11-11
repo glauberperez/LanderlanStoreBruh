@@ -8,7 +8,7 @@
       <div id="clientes_chart" style="width: 700px; height: 400px;"></div>
     </td>
     <td>
-      <div id="pedidos_chart" style="width: 400px; height: 400px;"></div>
+      <div id="categories_chart" style="width: 400px; height: 400px;"></div>
     </td>
   </tr>
   <tr>
@@ -74,15 +74,37 @@
 
   function drawChart() {
 
-    let pedidos_data = google.visualization.arrayToDataTable([
-      ['Data', 'Pedidos por data'],
-      ['data', <?php echo ($pedidos) ?>],
-      ['data', <?php echo ($pedidos) ?>],
-      ['data', <?php echo ($pedidos) ?>],
-      ['data', <?php echo ($pedidos) ?>],
-      ['data', <?php echo ($pedidos) ?>],
-      ['data', <?php echo ($pedidos) ?>],
-    ]);
+    let pedidos_data = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: meses,
+        datasets: [{
+          label: 'Reservas feitas em 6 meses',
+          data: valores,
+          borderWidth: 6,
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        maintainAspectRatio: false,
+      }
+    });
 
     let top_selling_products = getTop5SellingProducts()
     console.log(top_selling_products)
@@ -91,39 +113,21 @@
     console.log(top_selling_categories)
 
     // uses the data from the getTop5SellingProducts() function to populate the chart
-    /* let produtos_data = google.visualization.arrayToDataTable([
+    let produtos_data = google.visualization.arrayToDataTable([
       ['Produto', 'Quantidade vendida'],
       ['produto', 1],
       ['produto', 1],
       ['produto', 1],
       ['produto', 1],
       ['produto', 1],
-    ]); */
-
-    produtos_data.addRows(top_selling_products[0], top_selling_products[1], top_selling_products[2])
-
-    let clientes_data = google.visualization.arrayToDataTable([
-      ['Task', 'Hours per Day'],
-      ['Work', <?php echo ($clientes) ?>],
-      ['Eat', <?php echo ($clientes) ?>],
-      ['Commute', <?php echo ($clientes) ?>],
-      ['Watch TV', <?php echo ($clientes) ?>],
-      ['Sleep', <?php echo ($clientes) ?>]
     ]);
 
-    let clientes_options = {
-      title: 'Todos os clientes'
-    };
 
-    let pedidos_options = {
-      title: 'Total de pedidos'
-    };
 
     let produtos_options = {
       title: 'Total de produtos cadastrados'
     };
 
-    const clientes_chart = new google.visualization.LineChart(document.querySelector('#clientes_chart'));
     const pedidos_chart = new google.visualization.PieChart(document.querySelector('#pedidos_chart'));
     const produtos_chart = new google.visualization.PieChart(document.querySelector('#produtos_chart'));
 
