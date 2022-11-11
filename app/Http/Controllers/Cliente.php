@@ -51,7 +51,8 @@ class Cliente extends Controller
             "nome" => $request->nome,
             "dtNasc" => $request->dtNasc,
             "estadoCivil" => $request->estadoCivil,
-            "endereco" => $request->endereco,
+            "rua" => $request->rua,
+            "bairro" => $request->bairro,
             "numero" => $request->numero,
             "complemento" => $request->complemento,
             "cep" => $request->cep,
@@ -61,7 +62,6 @@ class Cliente extends Controller
             "cpf" => $request->cpf,
             "email" => $request->email,
             "fone" => $request->fone,
-            "celular" => $request->celular,
         ]);
 
         if ($store) {

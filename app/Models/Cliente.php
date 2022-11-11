@@ -19,6 +19,7 @@ class Cliente extends Model
         "estadoCivil",
         "endereco",
         "numero",
+        "rua",
         "complemento",
         "cep",
         "cidade",
@@ -27,7 +28,5 @@ class Cliente extends Model
         "cpf",
         "email",
         "fone",
-        "celular"
     ];
-    
 }

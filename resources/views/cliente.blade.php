@@ -109,16 +109,20 @@
               <input type="text" class="form-control" id="city" name="cidade" aria-describedby="emailHelp">
             </div>
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Numero</label>
-              <input type="text" class="form-control" id="number" name="numero" aria-describedby="emailHelp">
+              <label for="exampleInputEmail1" class="form-label">Rua</label>
+              <input type="text" class="form-control" id="street" name="rua" aria-describedby="emailHelp">
             </div>
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Endereço</label>
-              <input type="text" class="form-control" id="address" name="endereco" aria-describedby="emailHelp">
+              <label for="exampleInputEmail1" class="form-label">Bairro</label>
+              <input type="text" class="form-control" id="neighborhood" name="bairro" aria-describedby="emailHelp">
             </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Complemento</label>
               <input type="text" class="form-control" id="complement" name="complemento" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Numero</label>
+              <input type="text" class="form-control" id="number" name="numero" aria-describedby="emailHelp">
             </div>
         </div>
         <div class="modal-footer">
