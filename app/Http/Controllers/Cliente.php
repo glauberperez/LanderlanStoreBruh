@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cliente as ModelsCliente;
 use Illuminate\Http\Request;
 use App\Models\Pedido as ModelsPedido;
+use Illuminate\Support\Facades\DB;
 
 class Cliente extends Controller
 {
@@ -21,9 +22,11 @@ class Cliente extends Controller
      */
     public function index()
     {
-        $temp = $this->cliente->all();
+        $temp = ModelsCliente::paginate(10);
 
-        return view('cliente', compact('temp'));
+        return view('cliente', compact('temp'), [
+            'users' => DB::table('tbcliente')->paginate(15)
+        ]);
     }
 
     /**

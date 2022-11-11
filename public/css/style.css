@@ -131,3 +131,10 @@ table thead {
 .prod-modal-btn {
     margin: 2vh auto auto auto;
 }
+
+/* makes everything be organized vertically */
+.stuff {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

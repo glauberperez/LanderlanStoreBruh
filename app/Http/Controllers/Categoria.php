@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categoria as ModelsCategoria;
 use App\Models\Produto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Categoria extends Controller
 {
@@ -23,9 +24,11 @@ class Categoria extends Controller
      */
     public function index()
     {
-        $temp = $this->categoria->all();
+        $temp = ModelsCategoria::paginate(10);
 
-        return view('categoria', compact('temp'));
+        return view('categoria', compact('temp'), [
+            'users' => DB::table('tbcategoria')->paginate(15)
+        ]);
     }
 
     /**

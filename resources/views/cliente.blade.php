@@ -8,7 +8,7 @@
     <tr>
       <th scope="col">idCliente</th>
       <th scope="col">nome</th>
-      <th scope="col">dtNasc    </th>
+      <th scope="col">dtNasc </th>
       <th scope="col">estadoCivil</th>
       <th scope="col">endereco</th>
       <th scope="col">numero</th>
@@ -20,39 +20,42 @@
       <th scope="col">cpf</th>
       <th scope="col">email</th>
       <th scope="col">fone</th>
-      <th scope="col">celular</th> 
+      <th scope="col">celular</th>
       <th scope="col"><i title="Adicionar" class="fa-solid fa-plus" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></th>
-    </tr>     
+    </tr>
 
   </thead>
   <tbody>
     @foreach($temp as $cliente)
-      <tr>
-        <th scope="row">{{ $cliente->idCliente }}</th>
-        <td>{{ $cliente->nome }}</td>
-        <td>{{ $cliente->dtNasc }}</td>
-        <td>{{ $cliente->estadoCivil }}</td>
-        <td>{{ $cliente->endereco }}</td>
-        <td>{{ $cliente->numero }}</td>
-        <td>{{ $cliente->complemento }}</td>
-        <td>{{ $cliente->cep }}</td>
-        <td>{{ $cliente->cidade }}</td>
-        <td>{{ $cliente->estado }}</td>
-        <td>{{ $cliente->rg }}</td>
-        <td>{{ $cliente->cpf }}</td>
-        <td>{{ $cliente->email }}</td>
-        <td>{{ $cliente->fone }}</td>
-        <td>{{ $cliente->celular }}</td>
-        <td>        
-          <a href=""><i title="Editar" class="fa-solid fa-pen-to-square"></i></a> <!-- fazer o modaizolas -->
-          <a href="/cliente/d/{{ $cliente->idCliente }}"><i title="Excluir" class="fa-solid fa-trash"></i></a>
+    <tr>
+      <th scope="row">{{ $cliente->idCliente }}</th>
+      <td>{{ $cliente->nome }}</td>
+      <td>{{ $cliente->dtNasc }}</td>
+      <td>{{ $cliente->estadoCivil }}</td>
+      <td>{{ $cliente->endereco }}</td>
+      <td>{{ $cliente->numero }}</td>
+      <td>{{ $cliente->complemento }}</td>
+      <td>{{ $cliente->cep }}</td>
+      <td>{{ $cliente->cidade }}</td>
+      <td>{{ $cliente->estado }}</td>
+      <td>{{ $cliente->rg }}</td>
+      <td>{{ $cliente->cpf }}</td>
+      <td>{{ $cliente->email }}</td>
+      <td>{{ $cliente->fone }}</td>
+      <td>{{ $cliente->celular }}</td>
+      <td>
+        <a href=""><i title="Editar" class="fa-solid fa-pen-to-square"></i></a> <!-- fazer o modaizolas -->
+        <a href="/cliente/d/{{ $cliente->idCliente }}"><i title="Excluir" class="fa-solid fa-trash"></i></a>
       </td>
-      </tr>
-      @endforeach
+    </tr>
+    @endforeach
   </tbody>
   <!-- Button trigger modal -->
 </table>
 
+<div class="d-flex justify-content-center">
+  {!! $temp->appends(['sort' => 'categoria'])->links() !!}
+</div>
 
 
 <!-- Modal -->
@@ -64,71 +67,71 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <form method="POST" action="{{ route('cliente.store') }}" enctype="multipart/form-data" class="black-text">
-        @csrf
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Nome</label>
-          <input type="text" class="form-control" id="name" name="nome" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Data de nascimento</label>
-          <input type="date" class="form-control" id="birthday" name="dtNasc" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">CPF</label>
-          <input type="text" class="form-control" id="cpf" name="cpf" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">RG</label>
-          <input type="text" class="form-control" id="rg" name="rg" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email</label>
-          <input type="text" class="form-control" id="email" name="email" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Estado Civil</label>
-          <input type="text" class="form-control" id="status" name="estadoCivil" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Celular</label>
-          <input type="text" class="form-control" id="cellphone" name="celular" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Telefone</label>
-          <input type="text" class="form-control" id="phone" name="fone" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">CEP</label>
-          <input type="text" class="form-control" data-mask='cep' id="cep" name="cep" aria-describedby="emailHelp">
-          <button>Foda</button>
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Estado</label>
-          <input type="text" class="form-control" id="state" name="estado" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Cidade</label>
-          <input type="text" class="form-control" id="city" name="cidade" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Numero</label>
-          <input type="text" class="form-control" id="number" name="numero" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Endereço</label>
-          <input type="text" class="form-control" id="address" name="endereco" aria-describedby="emailHelp">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Complemento</label>
-        <input type="text" class="form-control" id="complement" name="complemento" aria-describedby="emailHelp">
-        </div>
+        <form method="POST" action="{{ route('cliente.store') }}" enctype="multipart/form-data" class="black-text">
+          @csrf
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="name" name="nome" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Data de nascimento</label>
+            <input type="date" class="form-control" id="birthday" name="dtNasc" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">CPF</label>
+            <input type="text" class="form-control" id="cpf" name="cpf" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">RG</label>
+            <input type="text" class="form-control" id="rg" name="rg" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input type="text" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Estado Civil</label>
+            <input type="text" class="form-control" id="status" name="estadoCivil" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Celular</label>
+            <input type="text" class="form-control" id="cellphone" name="celular" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Telefone</label>
+            <input type="text" class="form-control" id="phone" name="fone" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">CEP</label>
+            <input type="text" class="form-control" data-mask='cep' id="cep" name="cep" aria-describedby="emailHelp">
+            <button>Foda</button>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Estado</label>
+            <input type="text" class="form-control" id="state" name="estado" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Cidade</label>
+            <input type="text" class="form-control" id="city" name="cidade" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Numero</label>
+            <input type="text" class="form-control" id="number" name="numero" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Endereço</label>
+            <input type="text" class="form-control" id="address" name="endereco" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Complemento</label>
+            <input type="text" class="form-control" id="complement" name="complemento" aria-describedby="emailHelp">
+          </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
         <button type="submit" class="btn btn-primary">Adicionar Cliente</button>
       </div>
-    </form>
+      </form>
     </div>
   </div>
 </div>

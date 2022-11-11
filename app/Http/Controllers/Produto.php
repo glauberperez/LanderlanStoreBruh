@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Produto as ModelsProduto;
 use App\Models\Pedido as ModelsPedido;
+use Illuminate\Support\Facades\DB;
 
 class Produto extends Controller
 {

@@ -40,7 +40,7 @@ Route::get('/pedido', function () {
 });
 
 // dashboard
-Route::get('/dashboard', [Dashboard::class, 'index']);
+Route::get('/dashboard', [Dashboard::class, 'index'],);
 Route::get('/getAllUsers', [Dashboard::class, 'getAllUsers']);
 Route::get('/getAllPedidos', [Dashboard::class, 'getAllPedidos']);
 Route::get('/getAllPedidosLastYear', [Dashboard::class, 'getAllPedidosLastYear']);

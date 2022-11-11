@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pedido as ModelsPedido;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use PDF;
 
 class Pedido extends Controller
@@ -20,9 +21,11 @@ class Pedido extends Controller
      */
     public function index()
     {
-        $temp = $this->pedidos->all();
+        $temp = ModelsPedido::paginate(10);
 
-        return view('pedido', compact('temp'));
+        return view('pedido', compact('temp'), [
+            'users' => DB::table('tbpedido')->paginate(15)
+        ]);
     }
 
     // Generate PDF
