@@ -140,7 +140,7 @@
 -->
 
   <div class="d-flex justify-content-center">
-    {!! $temp->appends(['sort' => 'categoria'])->links() !!}
+    {!! $temp->links() !!}
   </div>
 
 </div>

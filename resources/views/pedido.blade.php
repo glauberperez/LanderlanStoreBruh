@@ -84,7 +84,7 @@
     <a href="/pedido/pdf"><button class="btn btn-primary">Gerar relatório</button></a>
 
     <div class="d-flex justify-content-center">
-      {!! $temp->appends(['sort' => 'categoria'])->links() !!}
+      {!! $temp->links() !!}
     </div>
 
   </div>
