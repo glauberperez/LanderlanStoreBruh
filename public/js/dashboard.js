@@ -76,36 +76,6 @@ const getTop5SellingUsers = async () => {
         .catch((error) => console.error(error));
 };
 
-const getAllPedidos = async () => {
-    await fetch(`${url}/getAllPedidos`, {
-        method: "GET",
-        mode: "no-cors",
-        headers: new Headers({
-            Accept: "application/json",
-        }),
-    })
-        .then((response) => response.json())
-        .then((json) => {
-            console.log(json);
-        })
-        .catch((error) => console.error(error));
-};
-
-const getAllUsers = async () => {
-    await fetch(`${url}/getAllUsers`, {
-        method: "GET",
-        mode: "no-cors",
-        headers: new Headers({
-            Accept: "application/json",
-        }),
-    })
-        .then((response) => response.json())
-        .then((json) => {
-            console.log(json);
-        })
-        .catch((error) => console.error(error));
-};
-
 const getAllPedidosLastYear = async () => {
     await fetch(`${url}/getAllPedidosLastYear`, {
         method: "GET",
