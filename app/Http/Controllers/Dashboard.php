@@ -20,7 +20,7 @@ class Dashboard extends Controller
         $pedidos = Pedido::all()->count();
         $produtos = Produto::all()->count();
         $clientes = Cliente::all()->count();
-        $categorias = Categoria::all();
+        $categorias = Categoria::all()->count();
 
         return view('dashboard', compact('pedidos', 'produtos', 'clientes', 'categorias'));
     }
