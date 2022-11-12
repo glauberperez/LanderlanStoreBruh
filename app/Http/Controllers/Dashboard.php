@@ -17,9 +17,9 @@ class Dashboard extends Controller
      */
     public function index()
     {
-        $pedidos = Pedido::all();
-        $produtos = Produto::all();
-        $clientes = Cliente::all();
+        $pedidos = Pedido::all()->count();
+        $produtos = Produto::all()->count();
+        $clientes = Cliente::all()->count();
         $categorias = Categoria::all();
 
         return view('dashboard', compact('pedidos', 'produtos', 'clientes', 'categorias'));
@@ -108,28 +108,28 @@ class Dashboard extends Controller
 
     public function getAllPedidosLastYear(): JsonResponse
     {
-        $pedidos = Pedido::whereYear('data', [date('Y'), strtotime('-365 days')])->get();
+        $pedidos = Pedido::whereYear('data', [date('Y'), strtotime('-365 days')])->count();
 
         return response()->json($pedidos);
     }
 
     public function getAllPedidosLastMonth(): JsonResponse
     {
-        $pedidos = Pedido::whereMonth('data', [date('m'), strtotime('-30 days')])->get();
+        $pedidos = Pedido::whereMonth('data', [date('m'), strtotime('-30 days')])->count();
 
         return response()->json($pedidos);
     }
 
     public function getAllPedidosLastWeek(): JsonResponse
     {
-        $pedidos = Pedido::whereBetween('data', [date('Y-m-d', strtotime('-7 days')), date('Y-m-d')])->get();
+        $pedidos = Pedido::whereBetween('data', [date('Y-m-d', strtotime('-7 days')), date('Y-m-d')])->count();
 
         return response()->json($pedidos);
     }
 
     public function getAllPedidosLastDay(): JsonResponse
     {
-        $pedidos = Pedido::whereDate('data', [date('Y-m-d'), strtotime('-1 days')])->get();
+        $pedidos = Pedido::whereDate('data', [date('Y-m-d'), strtotime('-1 days')])->count();
 
         return response()->json($pedidos);
     }

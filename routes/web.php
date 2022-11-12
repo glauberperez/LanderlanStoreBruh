@@ -51,6 +51,7 @@ Route::get('/ ', [Dashboard::class, 'getTop5SellingCategories']);
 Route::get('/getTop5SellingProducts', [Dashboard::class, 'getTop5SellingProducts']);
 Route::get('/getTop5SellingUsers', [Dashboard::class, 'getTop5SellingUsers']);
 Route::get('/getTop5SellingCategories', [Dashboard::class, 'getTop5SellingCategories']);
+Route::get('/getAllUsers', [Dashboard::class, 'getAllUsers']);
 
 
 // gets
